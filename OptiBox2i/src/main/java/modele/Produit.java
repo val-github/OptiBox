@@ -14,4 +14,45 @@ public class Produit {
     public int Lprod;
     public int Hprod;
     public int NBprod;
+
+    public Produit(String id, int Lprod, int Hprod, int NBprod) {
+        this.id = id;
+        this.Lprod = Lprod;
+        this.Hprod = Hprod;
+        this.NBprod = NBprod;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public int getLprod() {
+        return Lprod;
+    }
+
+    public int getHprod() {
+        return Hprod;
+    }
+
+    public int getNBprod() {
+        return NBprod;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setLprod(int Lprod) {
+        this.Lprod = Lprod;
+    }
+
+    public void setHprod(int Hprod) {
+        this.Hprod = Hprod;
+    }
+
+    public void setNBprod(int NBprod) {
+        this.NBprod = NBprod;
+    }
+    
+    
 }
