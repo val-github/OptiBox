@@ -1,0 +1,7 @@
+- définition des classes
+
+- création de la db
+
+- solution triviale (1 boxe par produit)
+
+- solution optimisée

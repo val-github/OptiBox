@@ -10,5 +10,8 @@ package modele;
  * @author Val
  */
 public class Produit {
-    
+    public String id;
+    public int Lprod;
+    public int Hprod;
+    public int NBprod;
 }
