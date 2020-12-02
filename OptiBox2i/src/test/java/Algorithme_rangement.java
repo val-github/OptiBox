@@ -1,6 +1,7 @@
 
 import java.util.HashSet;
 import modele.Instance;
+import modele.Piece;
 import modele.Produit;
 import modele.Solution;
 
@@ -27,9 +28,16 @@ public class Algorithme_rangement {
     {
         int i;
         HashSet<Produit> liste_produits = instance.getEnsemble_produit();
+        
         for(Produit produit:liste_produits)
-        {
+        {//On assigne les pièces aux piles de box
             for(i=0;i<produit.NBprod;i++)
+            {//On crée le nombre de pièces renseignées dans produit dans l'attribut liste_piece
+                Piece p = new Piece(produit);
+                produit.liste_piece.add(p);
+            }
+            
+            for(Piece p:produit.liste_piece)
             {
                 
             }

@@ -16,7 +16,7 @@ public class Produit {
     public int Lprod;
     public int Hprod;
     public int NBprod;
-    private ArrayList<Piece> liste_piece;
+    public ArrayList<Piece> liste_piece;
 
     public Produit(String id, int Lprod, int Hprod, int NBprod) {
         this.id = id;
