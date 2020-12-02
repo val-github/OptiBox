@@ -3,6 +3,7 @@
   <persistence-unit name="com.mycompany_OptiBox2i_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>modele.Instance</class>
+    <class>modele.Type_Box</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/OptiBox"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

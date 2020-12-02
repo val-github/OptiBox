@@ -19,17 +19,14 @@ public class Piece {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    public Produit type;
+    private Produit type;
 
-    public Piece(String id, Produit type) {
+    public Piece( Produit type) {
         
         this.type = type;
     }
     
-    public Piece(Produit type) {
-       
-        this.type = type;
-    }
+ 
 
   
 

@@ -19,8 +19,8 @@ public class Solution {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    public HashSet<Box> ensemble_box;
-    public int prix;
+    private HashSet<Box> ensemble_box;
+    private int prix;
     
 
     public Solution( HashSet<Box> ensemble_box, int prix) {

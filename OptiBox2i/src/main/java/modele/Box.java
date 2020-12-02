@@ -21,16 +21,12 @@ public class Box {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    public int Lbox;
-    public int Hbox;
-    public double prixBox;
+    private Type_Box typeBox;
     private HashSet<Pile> ensemble_pile;
 
-    public Box( int Lbox, int Hbox, double prixBox, HashSet<Pile> pile) {
+    public Box( Type_Box typeBox, HashSet<Pile> pile) {
        
-        this.Lbox = Lbox;
-        this.Hbox = Hbox;
-        this.prixBox = prixBox;
+        this.typeBox = typeBox;
         this.ensemble_pile = pile;
     }
 
@@ -42,17 +38,6 @@ public class Box {
     @JoinColumn(name="id_type_box")
     public Box box;
 
-    public int getLbox() {
-        return Lbox;
-    }
-
-    public int getHbox() {
-        return Hbox;
-    }
-
-    public double getPrixBox() {
-        return prixBox;
-    }
 
     public HashSet<Pile> getEnsemble_pile() {
         return ensemble_pile;
@@ -60,17 +45,7 @@ public class Box {
 
     
 
-    public void setLbox(int Lbox) {
-        this.Lbox = Lbox;
-    }
-
-    public void setHbox(int Hbox) {
-        this.Hbox = Hbox;
-    }
-
-    public void setPrixBox(double prixBox) {
-        this.prixBox = prixBox;
-    }
+ 
 
     public void setEnsemble_pile(HashSet<Pile> ensemble_pile) {
         this.ensemble_pile = ensemble_pile;

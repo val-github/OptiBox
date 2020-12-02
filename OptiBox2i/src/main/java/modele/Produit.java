@@ -45,14 +45,7 @@ public class Produit {
     public void setLprod(int Lprod) {
         this.Lprod = Lprod;
     }
-
-    public void setHprod(int Hprod) {
-        this.Hprod = Hprod;
-    }
-
-    public void setNBprod(int NBprod) {
-        this.NBprod = NBprod;
-    }
     
+  
     
 }

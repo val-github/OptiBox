@@ -17,20 +17,24 @@ import javax.persistence.Id;
  * @author felix
  */
 @Entity
-public class Instance implements Serializable {
+public class Type_Box implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nom;
-    private HashSet<Type_Box> ensemble_type_box;
-    private HashSet<Produit> ensemble_produit;
+    private int Lbox;
+    private int Hbox;
+    private double prixBox;
+    private HashSet<Box> ensemble_box;
 
     public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @Override
     public int hashCode() {
@@ -42,10 +46,10 @@ public class Instance implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Instance)) {
+        if (!(object instanceof Type_Box)) {
             return false;
         }
-        Instance other = (Instance) object;
+        Type_Box other = (Type_Box) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -54,46 +58,7 @@ public class Instance implements Serializable {
 
     @Override
     public String toString() {
-        return "modele.Instance[ id=" + id + " ]";
-    }
-
-    public Instance(String nom, HashSet<Box> ensemble_box, HashSet<Produit> ensemble_produit) {
-        this.nom = nom;
-        this.ensemble_type_box = ensemble_type_box;
-        this.ensemble_produit = ensemble_produit;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    
-
-    public HashSet<Produit> getEnsemble_produit() {
-        return ensemble_produit;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    
-
-    public void setEnsemble_produit(HashSet<Produit> ensemble_produit) {
-        this.ensemble_produit = ensemble_produit;
-    }
-
-    public HashSet<Type_Box> getEnsemble_type_box() {
-        return ensemble_type_box;
+        return "modele.Type_Box[ id=" + id + " ]";
     }
     
-    
-    
-    public void addProd (Produit prod){
-        this.ensemble_produit.add(prod);
-    }
 }
