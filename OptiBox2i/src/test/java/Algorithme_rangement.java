@@ -1,10 +1,12 @@
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import modele.Box;
 import modele.Instance;
 import modele.Piece;
 import modele.Produit;
 import modele.Solution;
+import modele.Type_Box;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,6 +31,8 @@ public class Algorithme_rangement {
     {
         int i;
         HashSet<Produit> liste_produits = instance.getEnsemble_produit();
+        HashSet<Type_Box> liste_type_box = instance.getEnsemble_type_box();
+        
         
         for(Produit produit:liste_produits)
         {//On assigne les pièces aux piles de box
@@ -40,9 +44,12 @@ public class Algorithme_rangement {
             }
             produit.setListe_piece(liste_piece);
             
-            for(Piece p:produit.liste_piece)
+            for(Piece p:liste_piece)
             {
-                
+                for(Type_Box type_box:liste_type_box)
+                {
+
+                }
             }
             
         }
