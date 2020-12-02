@@ -31,6 +31,10 @@ public class Instance implements Serializable {
         return id;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
 
     @Override
     public int hashCode() {
