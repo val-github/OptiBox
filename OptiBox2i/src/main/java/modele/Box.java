@@ -31,6 +31,11 @@ public class Box {
         this.ensemble_pile = pile;
     }
 
+    public Box(Type_Box typeBox) {
+        this.typeBox = typeBox;
+    }
+
+    
     @ManyToOne
     @JoinColumn(name="id")
     public Solution solution;

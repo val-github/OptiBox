@@ -4,6 +4,7 @@ import java.util.HashSet;
 import modele.Box;
 import modele.Instance;
 import modele.Piece;
+import modele.Pile;
 import modele.Produit;
 import modele.Solution;
 import modele.Type_Box;
@@ -48,9 +49,22 @@ public class Algorithme_rangement {
             {
                 for(Type_Box type_box:liste_type_box)
                 {//On prend la première boîte qui peut accueillir la pièce
-                    if (p.getProduit().getHprod()<type_box.getHbox())
-                    {
+                    if (p.getProduit().getHprod()<type_box.getHbox() 
+                            && p.getProduit().getLprod()<type_box.getLbox())
+                    {//On crée une entité box qui correspondra à cette boîte
                         
+                        //On crée la pile
+                        ArrayList<Piece> liste_piece_pile = null;
+                        liste_piece_pile.add(p);
+                        Pile pile = new Pile(liste_piece_pile);
+                        //On crée l'ensemble de pile
+                        HashSet<Pile> ensemble_pile = null;
+                        ensemble_pile.add(pile);
+                        //On crée la box
+                        Box box = new Box(type_box,ensemble_pile);
+                        
+                        
+                        //Tâche suivant faire en sorte de terminer la boucle box
                     }
                 }
             }
