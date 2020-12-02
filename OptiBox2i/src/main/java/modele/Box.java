@@ -6,28 +6,32 @@
 package modele;
 
 import java.util.HashSet;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author Val
  */
 public class Box {
-    public String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     public int Lbox;
     public int Hbox;
-    public int prixBox;
+    public double prixBox;
     private HashSet<Pile> ensemble_pile;
 
-    public Box(String id, int Lbox, int Hbox, int prixBox) {
-        this.id = id;
+    public Box( int Lbox, int Hbox, double prixBox, HashSet<Pile> pile) {
+       
         this.Lbox = Lbox;
         this.Hbox = Hbox;
         this.prixBox = prixBox;
+        this.ensemble_pile = pile;
     }
 
-    public String getId() {
-        return id;
-    }
+   
 
     public int getLbox() {
         return Lbox;
@@ -37,13 +41,15 @@ public class Box {
         return Hbox;
     }
 
-    public int getPrixBox() {
+    public double getPrixBox() {
         return prixBox;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public HashSet<Pile> getEnsemble_pile() {
+        return ensemble_pile;
     }
+
+    
 
     public void setLbox(int Lbox) {
         this.Lbox = Lbox;
@@ -53,9 +59,15 @@ public class Box {
         this.Hbox = Hbox;
     }
 
-    public void setPrixBox(int prixBox) {
+    public void setPrixBox(double prixBox) {
         this.prixBox = prixBox;
     }
+
+    public void setEnsemble_pile(HashSet<Pile> ensemble_pile) {
+        this.ensemble_pile = ensemble_pile;
+    }
     
-    
+    public void addPile(Pile pile){
+        this.ensemble_pile.add(pile);
+    }
 }

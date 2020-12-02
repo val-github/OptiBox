@@ -63,5 +63,47 @@ public class Instance implements Serializable {
     public String toString() {
         return "modele.Instance[ id=" + id + " ]";
     }
+
+    public Instance(Long id, String nom, HashSet<Box> ensemble_box, HashSet<Produit> ensemble_produit) {
+        this.id = id;
+        this.nom = nom;
+        this.ensemble_box = ensemble_box;
+        this.ensemble_produit = ensemble_produit;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public HashSet<Box> getEnsemble_box() {
+        return ensemble_box;
+    }
+
+    public HashSet<Produit> getEnsemble_produit() {
+        return ensemble_produit;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setEnsemble_box(HashSet<Box> ensemble_box) {
+        this.ensemble_box = ensemble_box;
+    }
+
+    public void setEnsemble_produit(HashSet<Produit> ensemble_produit) {
+        this.ensemble_produit = ensemble_produit;
+    }
     
+    public void addBox (Box box){
+        this.ensemble_box.add(box);
+    }
+    
+    public void addProd (Produit prod){
+        this.ensemble_produit.add(prod);
+    }
 }
