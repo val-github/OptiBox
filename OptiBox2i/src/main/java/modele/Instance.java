@@ -95,5 +95,11 @@ public class Instance implements Serializable {
         this.ensemble_produit = ensemble_produit;
     }
     
+    public void addBox (Box box){
+        this.ensemble_box.add(box);
+    }
     
+    public void addProd (Produit prod){
+        this.ensemble_produit.add(prod);
+    }
 }

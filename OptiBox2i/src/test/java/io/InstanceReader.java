@@ -17,7 +17,11 @@ package io;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashSet;
 import java.util.Scanner;
+import modele.Box;
+import modele.Instance;
+import modele.Pile;
 
 /**
  * Classe qui permet de lire une instance pour le projet de POO3 2020/2021.
@@ -82,6 +86,7 @@ public class InstanceReader {
         ////////////////////////////////////////////
         // TODO : Vous pouvez creer une instance.
         ////////////////////////////////////////////
+        Instance inst = Instance(0,nom,);
         
         readStringInLine(scanner, HEADER_BOX);
         // Dans la boucle qui suit, nous allons lire les donnees relatives a chaque box.
@@ -101,6 +106,13 @@ public class InstanceReader {
             ////////////////////////////////////////////
             // TODO : Vous pouvez ajoutez chacun des box a votre instance
             ////////////////////////////////////////////
+            String id = elem.getIdentifiant();
+            int lon = elem.getLongueur();
+            int haut = elem.getHauteur();
+            double prix = elem.getPrix();
+            HashSet<Pile> hashset = new HashSet();
+            Box box = Box(id,lon,haut,prix,hashset);
+            inst.addBox(box);
         }
         
         // Dans la boucle qui suit, nous allons lire les donnees relatives a chaque produit.
