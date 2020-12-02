@@ -12,11 +12,11 @@ import java.util.ArrayList;
  * @author Val
  */
 public class Produit {
-    public String id;
-    public int Lprod;
-    public int Hprod;
-    public int NBprod;
-    public ArrayList<Piece> liste_piece;
+    private String id;
+    private int Lprod;
+    private int Hprod;
+    private int NBprod;
+    private ArrayList<Piece> liste_piece;
 
     public Produit(String id, int Lprod, int Hprod, int NBprod) {
         this.id = id;
@@ -41,21 +41,14 @@ public class Produit {
         return NBprod;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public ArrayList<Piece> getListe_piece() {
+        return liste_piece;
     }
 
-    public void setLprod(int Lprod) {
-        this.Lprod = Lprod;
-    }
-
-    public void setHprod(int Hprod) {
-        this.Hprod = Hprod;
-    }
-
-    public void setNBprod(int NBprod) {
-        this.NBprod = NBprod;
+    public void setListe_piece(ArrayList<Piece> liste_piece) {
+        this.liste_piece = liste_piece;
     }
     
+  
     
 }

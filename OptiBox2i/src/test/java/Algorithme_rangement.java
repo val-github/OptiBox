@@ -31,7 +31,7 @@ public class Algorithme_rangement {
         
         for(Produit produit:liste_produits)
         {//On assigne les pièces aux piles de box
-            for(i=0;i<produit.NBprod;i++)
+            for(i=0;i<produit.getNBprod();i++)
             {//On crée le nombre de pièces renseignées dans produit dans l'attribut liste_piece
                 Piece p = new Piece(produit);
                 produit.liste_piece.add(p);
@@ -46,4 +46,5 @@ public class Algorithme_rangement {
         Solution solution= new Solution();
         return solution;
     }
+    
 }
