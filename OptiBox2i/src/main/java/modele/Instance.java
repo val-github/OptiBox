@@ -24,7 +24,7 @@ public class Instance implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nom;
-    private HashSet<Box> ensemble_box;
+    private HashSet<Type_Box> ensemble_type_box;
     private HashSet<Produit> ensemble_produit;
 
     public Long getId() {
@@ -35,9 +35,6 @@ public class Instance implements Serializable {
         return nom;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Override
     public int hashCode() {
@@ -64,10 +61,9 @@ public class Instance implements Serializable {
         return "modele.Instance[ id=" + id + " ]";
     }
 
-    public Instance(Long id, String nom, HashSet<Box> ensemble_box, HashSet<Produit> ensemble_produit) {
-        this.id = id;
+    public Instance(String nom, HashSet<Box> ensemble_box, HashSet<Produit> ensemble_produit) {
         this.nom = nom;
-        this.ensemble_box = ensemble_box;
+        this.ensemble_type_box = ensemble_type_box;
         this.ensemble_produit = ensemble_produit;
     }
 
@@ -79,9 +75,7 @@ public class Instance implements Serializable {
         return nom;
     }
 
-    public HashSet<Box> getEnsemble_box() {
-        return ensemble_box;
-    }
+    
 
     public HashSet<Produit> getEnsemble_produit() {
         return ensemble_produit;
@@ -91,17 +85,17 @@ public class Instance implements Serializable {
         this.nom = nom;
     }
 
-    public void setEnsemble_box(HashSet<Box> ensemble_box) {
-        this.ensemble_box = ensemble_box;
-    }
+    
 
     public void setEnsemble_produit(HashSet<Produit> ensemble_produit) {
         this.ensemble_produit = ensemble_produit;
     }
-    
-    public void addBox (Box box){
-        this.ensemble_box.add(box);
+
+    public HashSet<Type_Box> getEnsemble_type_box() {
+        return ensemble_type_box;
     }
+    
+    
     
     public void addProd (Produit prod){
         this.ensemble_produit.add(prod);

@@ -22,6 +22,7 @@ import java.util.Scanner;
 import modele.Box;
 import modele.Instance;
 import modele.Pile;
+import modele.Produit;
 
 /**
  * Classe qui permet de lire une instance pour le projet de POO3 2020/2021.
@@ -83,10 +84,13 @@ public class InstanceReader {
         }
         // Dans la ligne qui suit vous recuperez le nom de l'instance.
         String nom = readStringInLine(scanner, "Nom");
+        HashSet<Box> ensemble_box = null;
+        HashSet<Produit> ensemble_produit = null;
+        
         ////////////////////////////////////////////
         // TODO : Vous pouvez creer une instance.
         ////////////////////////////////////////////
-        Instance inst = Instance(0,nom,);
+        Instance inst = new Instance(nom,ensemble_box,ensemble_produit);
         
         readStringInLine(scanner, HEADER_BOX);
         // Dans la boucle qui suit, nous allons lire les donnees relatives a chaque box.
@@ -111,7 +115,7 @@ public class InstanceReader {
             int haut = elem.getHauteur();
             double prix = elem.getPrix();
             HashSet<Pile> hashset = new HashSet();
-            Box box = Box(id,lon,haut,prix,hashset);
+            Box box = new Box(lon,haut,prix,hashset);
             inst.addBox(box);
         }
         
@@ -132,6 +136,14 @@ public class InstanceReader {
             ////////////////////////////////////////////
             // TODO : Vous pouvez ajoutez chacun des produits a votre instance
             ////////////////////////////////////////////
+            
+            String id = elem.getIdentifiant();
+            int lon = elem.getLongueur();
+            int haut = elem.getHauteur();
+            int nb = elem.getQuantite();
+            HashSet<Pile> hashset = new HashSet();
+            Produit prod = new Produit(lon,haut,nb);
+            inst.addProd(prod);
         }
     }
 
@@ -387,7 +399,7 @@ public class InstanceReader {
      */
     public static void main(String[] args) {
         try {
-            InstanceReader reader = new InstanceReader("instance_test.csv");
+            InstanceReader reader = new InstanceReader("C:\\Users\\Val\\Documents\\devoir\\LE3_2\\POO\\OptiBox\\instancesinstance_test.csv");
             reader.readInstance();
             System.out.println("Instance lue avec success !");
         } catch (ReaderException ex) {
