@@ -6,27 +6,27 @@
 package modele;
 
 import java.util.ArrayList;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *test
  * @author Val
  */
 public class Produit {
-    public String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     public int Lprod;
     public int Hprod;
     public int NBprod;
     private ArrayList<Piece> liste_piece;
 
-    public Produit(String id, int Lprod, int Hprod, int NBprod) {
-        this.id = id;
+    public Produit(int Lprod, int Hprod, int NBprod) {
         this.Lprod = Lprod;
         this.Hprod = Hprod;
         this.NBprod = NBprod;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public int getLprod() {
@@ -39,10 +39,6 @@ public class Produit {
 
     public int getNBprod() {
         return NBprod;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public void setLprod(int Lprod) {

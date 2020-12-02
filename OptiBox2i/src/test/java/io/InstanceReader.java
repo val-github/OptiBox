@@ -136,6 +136,14 @@ public class InstanceReader {
             ////////////////////////////////////////////
             // TODO : Vous pouvez ajoutez chacun des produits a votre instance
             ////////////////////////////////////////////
+            
+            String id = elem.getIdentifiant();
+            int lon = elem.getLongueur();
+            int haut = elem.getHauteur();
+            int nb = elem.getQuantite();
+            HashSet<Pile> hashset = new HashSet();
+            Produit prod = new Produit(lon,haut,nb);
+            inst.addProd(prod);
         }
     }
 
