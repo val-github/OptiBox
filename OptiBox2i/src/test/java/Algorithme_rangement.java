@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import modele.Instance;
 import modele.Piece;
@@ -31,11 +32,13 @@ public class Algorithme_rangement {
         
         for(Produit produit:liste_produits)
         {//On assigne les pièces aux piles de box
+            HashSet<Piece> liste_piece = produit.getListe_piece();
             for(i=0;i<produit.getNBprod();i++)
             {//On crée le nombre de pièces renseignées dans produit dans l'attribut liste_piece
                 Piece p = new Piece(produit);
-                produit.liste_piece.add(p);
+                liste_piece.add(p);
             }
+            produit.setListe_piece(liste_piece);
             
             for(Piece p:produit.liste_piece)
             {

@@ -6,6 +6,7 @@
 package modele;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *test
@@ -16,7 +17,7 @@ public class Produit {
     private int Lprod;
     private int Hprod;
     private int NBprod;
-    private ArrayList<Piece> liste_piece;
+    private HashSet<Piece> liste_piece;
 
     public Produit(String id, int Lprod, int Hprod, int NBprod) {
         this.id = id;
@@ -41,11 +42,11 @@ public class Produit {
         return NBprod;
     }
 
-    public ArrayList<Piece> getListe_piece() {
+    public HashSet<Piece> getListe_piece() {
         return liste_piece;
     }
 
-    public void setListe_piece(ArrayList<Piece> liste_piece) {
+    public void setListe_piece(HashSet<Piece> liste_piece) {
         this.liste_piece = liste_piece;
     }
     
