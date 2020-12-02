@@ -30,6 +30,10 @@ public class Solution {
         
     }
 
+    public Solution() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public long getId() {
         return id;
     }

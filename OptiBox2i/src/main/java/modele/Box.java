@@ -6,29 +6,32 @@
 package modele;
 
 import java.util.HashSet;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author Val
  */
 public class Box {
-    public String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     public int Lbox;
     public int Hbox;
     public double prixBox;
     private HashSet<Pile> ensemble_pile;
 
-    public Box(String id, int Lbox, int Hbox, double prixBox, HashSet<Pile> pile) {
-        this.id = id;
+    public Box( int Lbox, int Hbox, double prixBox, HashSet<Pile> pile) {
+       
         this.Lbox = Lbox;
         this.Hbox = Hbox;
         this.prixBox = prixBox;
         this.ensemble_pile = pile;
     }
 
-    public String getId() {
-        return id;
-    }
+   
 
     public int getLbox() {
         return Lbox;
@@ -46,9 +49,7 @@ public class Box {
         return ensemble_pile;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    
 
     public void setLbox(int Lbox) {
         this.Lbox = Lbox;
