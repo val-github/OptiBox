@@ -10,6 +10,7 @@ import java.util.HashSet;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *test
@@ -22,6 +23,7 @@ public class Produit {
     private int Lprod;
     private int Hprod;
     private int NBprod;
+    @OneToMany(mappedBy="produit")
     private HashSet<Piece> liste_piece;
 
     public Produit(int Lprod, int Hprod, int NBprod) {

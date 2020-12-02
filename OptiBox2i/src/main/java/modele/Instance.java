@@ -71,9 +71,7 @@ public class Instance implements Serializable {
         return serialVersionUID;
     }
 
-    public String getNom() {
-        return nom;
-    }
+   
 
     
 

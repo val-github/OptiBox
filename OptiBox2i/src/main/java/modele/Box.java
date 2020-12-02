@@ -21,6 +21,7 @@ public class Box {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @ManyToOne
     private Type_Box typeBox;
     private HashSet<Pile> ensemble_pile;
 

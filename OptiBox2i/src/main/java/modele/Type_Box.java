@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,6 +27,7 @@ public class Type_Box implements Serializable {
     private int Lbox;
     private int Hbox;
     private double prixBox;
+    @OneToMany(mappedBy = "typeBox")
     private HashSet<Box> ensemble_box;
 
     public Long getId() {
@@ -55,6 +57,20 @@ public class Type_Box implements Serializable {
         }
         return true;
     }
+
+    public int getLbox() {
+        return Lbox;
+    }
+
+    public int getHbox() {
+        return Hbox;
+    }
+
+    public double getPrixBox() {
+        return prixBox;
+    }
+    
+    
 
     @Override
     public String toString() {

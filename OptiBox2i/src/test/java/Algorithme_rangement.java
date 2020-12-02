@@ -47,8 +47,11 @@ public class Algorithme_rangement {
             for(Piece p:liste_piece)
             {
                 for(Type_Box type_box:liste_type_box)
-                {
-
+                {//On prend la première boîte qui peut accueillir la pièce
+                    if (p.getProduit().getHprod()<type_box.getHbox())
+                    {
+                        
+                    }
                 }
             }
             
