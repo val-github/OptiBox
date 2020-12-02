@@ -5,6 +5,8 @@
  */
 package modele;
 
+import java.util.HashSet;
+
 /**
  *
  * @author Val
@@ -14,6 +16,7 @@ public class Box {
     public int Lbox;
     public int Hbox;
     public int prixBox;
+    private HashSet<Pile> ensemble_pile;
 
     public Box(String id, int Lbox, int Hbox, int prixBox) {
         this.id = id;
