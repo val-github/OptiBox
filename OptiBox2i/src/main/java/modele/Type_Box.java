@@ -6,6 +6,7 @@
 package modele;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,10 @@ public class Type_Box implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private int Lbox;
+    private int Hbox;
+    private double prixBox;
+    private HashSet<Box> ensemble_box;
 
     public Long getId() {
         return id;
