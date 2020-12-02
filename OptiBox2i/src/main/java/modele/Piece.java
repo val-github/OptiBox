@@ -5,6 +5,9 @@
  */
 package modele;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import modele.Produit;
 
 /**
@@ -12,24 +15,26 @@ import modele.Produit;
  * @author Val
  */
 public class Piece {
-    public String id;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     public Produit type;
 
     public Piece(String id, Produit type) {
-        this.id = id;
+        
+        this.type = type;
+    }
+    
+    public Piece(Produit type) {
+       
         this.type = type;
     }
 
-    public String getId() {
-        return id;
-    }
+  
 
     public Produit getType() {
         return type;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public void setType(Produit type) {

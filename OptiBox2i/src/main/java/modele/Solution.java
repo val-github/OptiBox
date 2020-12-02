@@ -6,20 +6,25 @@
 package modele;
 
 import java.util.HashSet;
-import java.util.List;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author Val
  */
 public class Solution {
-    public long id;
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     public HashSet<Box> ensemble_box;
     public int prix;
     
 
-    public Solution(long id, HashSet<Box> ensemble_box, int prix) {
-        this.id = id;
+    public Solution( HashSet<Box> ensemble_box, int prix) {
+        
         this.ensemble_box = ensemble_box;
         this.prix = prix;
         
