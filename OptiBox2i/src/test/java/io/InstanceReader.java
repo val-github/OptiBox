@@ -84,13 +84,13 @@ public class InstanceReader {
         }
         // Dans la ligne qui suit vous recuperez le nom de l'instance.
         String nom = readStringInLine(scanner, "Nom");
-        HashSet<Box> ensemble_box;
-        HashSet<Produit> ensemble_produit;
+        HashSet<Box> ensemble_box = null;
+        HashSet<Produit> ensemble_produit = null;
         
         ////////////////////////////////////////////
         // TODO : Vous pouvez creer une instance.
         ////////////////////////////////////////////
-        Instance inst = Instance(nom,ensemble_box,ensemble_produit);
+        Instance inst = new Instance(nom,ensemble_box,ensemble_produit);
         
         readStringInLine(scanner, HEADER_BOX);
         // Dans la boucle qui suit, nous allons lire les donnees relatives a chaque box.
@@ -399,7 +399,7 @@ public class InstanceReader {
      */
     public static void main(String[] args) {
         try {
-            InstanceReader reader = new InstanceReader("instance_test.csv");
+            InstanceReader reader = new InstanceReader("C:\\Users\\Val\\Documents\\devoir\\LE3_2\\POO\\OptiBox\\instancesinstance_test.csv");
             reader.readInstance();
             System.out.println("Instance lue avec success !");
         } catch (ReaderException ex) {

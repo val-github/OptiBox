@@ -60,8 +60,7 @@ public class Instance implements Serializable {
         return "modele.Instance[ id=" + id + " ]";
     }
 
-    public Instance(Long id, String nom, HashSet<Box> ensemble_box, HashSet<Produit> ensemble_produit) {
-        this.id = id;
+    public Instance(String nom, HashSet<Box> ensemble_box, HashSet<Produit> ensemble_produit) {
         this.nom = nom;
         this.ensemble_box = ensemble_box;
         this.ensemble_produit = ensemble_produit;

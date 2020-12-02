@@ -6,9 +6,12 @@
 package modele;
 
 import java.util.HashSet;
+import java.util.List;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -31,7 +34,13 @@ public class Box {
         this.ensemble_pile = pile;
     }
 
-   
+    @ManyToOne
+    @JoinColumn(name="id")
+    public Solution solution;
+    
+    @ManyToOne
+    @JoinColumn(name="id_type_box")
+    public Box box;
 
     public int getLbox() {
         return Lbox;

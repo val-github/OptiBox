@@ -6,6 +6,7 @@
 package modele;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +22,7 @@ public class Produit {
     public int Lprod;
     public int Hprod;
     public int NBprod;
-    private ArrayList<Piece> liste_piece;
+    private HashSet<Piece> liste_piece;
 
     public Produit(int Lprod, int Hprod, int NBprod) {
         this.Lprod = Lprod;
