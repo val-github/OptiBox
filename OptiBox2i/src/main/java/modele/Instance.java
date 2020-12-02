@@ -31,6 +31,10 @@ public class Instance implements Serializable {
         return id;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
