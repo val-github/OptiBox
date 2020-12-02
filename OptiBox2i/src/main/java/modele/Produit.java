@@ -19,9 +19,9 @@ public class Produit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    public int Lprod;
-    public int Hprod;
-    public int NBprod;
+    private int Lprod;
+    private int Hprod;
+    private int NBprod;
     private HashSet<Piece> liste_piece;
 
     public Produit(int Lprod, int Hprod, int NBprod) {
@@ -45,7 +45,15 @@ public class Produit {
     public void setLprod(int Lprod) {
         this.Lprod = Lprod;
     }
+
+    public HashSet<Piece> getListe_piece() {
+        return liste_piece;
+    }
+
+    public void setListe_piece(HashSet<Piece> liste_piece) {
+        this.liste_piece = liste_piece;
+    }
     
-  
+    
     
 }
