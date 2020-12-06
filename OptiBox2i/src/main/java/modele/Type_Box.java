@@ -17,19 +17,35 @@ import javax.persistence.OneToMany;
  *
  * @author felix
  */
-@Entity
+//@Entity
 public class Type_Box implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int Lbox;
     private int Hbox;
     private double prixBox;
-    @OneToMany(mappedBy = "typeBox")
+   // @OneToMany(mappedBy = "typeBox")
     private HashSet<Box> ensemble_box;
 
+    
+    
+    public Type_Box() {
+    this.Lbox = 0;
+    this.Hbox = 0;
+    this.prixBox = 0;
+    HashSet<Pile> hashset = new HashSet();
+    }
+    
+    public Type_Box(int Lbox,int Hbox,double prixBox) {
+    this.Lbox = Lbox;
+    this.Hbox = Hbox;
+    this.prixBox = prixBox;
+   
+    }
+    
     public Long getId() {
         return id;
     }
@@ -74,7 +90,8 @@ public class Type_Box implements Serializable {
 
     @Override
     public String toString() {
-        return "modele.Type_Box[ id=" + id + " ]";
+       // return "modele.Type_Box[ id=" + id + " ]";
+       return "modele.Type_Box [ id=" + id + " Lbox ="+ Lbox + " Hbox =" + Hbox +" PrixBox = "+ prixBox +" ]";
     }
     
 }

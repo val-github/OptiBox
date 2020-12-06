@@ -7,12 +7,15 @@ package modele;
 
 import java.util.HashSet;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+@Entity
 /**
  *
  * @author Val
@@ -21,23 +24,36 @@ public class Box {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne
-    private Type_Box typeBox;
-    private HashSet<Pile> ensemble_pile;
+   
+  //  @ManyToOne
+   private Type_Box typeBox;
+   private HashSet<Pile> ensemble_pile;
+    
 
+public Box( ) {
+       
+        this.typeBox =new Type_Box();
+        this.ensemble_pile = new HashSet<Pile>();
+    }
     public Box( Type_Box typeBox, HashSet<Pile> pile) {
        
         this.typeBox = typeBox;
         this.ensemble_pile = pile;
     }
+    
+    public Box(int Lbox, int Hbox, double prixBox ) {
+       this();
+        this.typeBox = new Type_Box(Lbox,Hbox,prixBox);
+    }
 
-    @ManyToOne
-    @JoinColumn(name="id")
+    @ManyToOne (cascade = CascadeType.PERSIST)
+    @JoinColumn(name="solution")//Que dans Many to one pour dire ça correspond à la colonne name ainsi 
     public Solution solution;
     
-    @ManyToOne
-    @JoinColumn(name="id_type_box")
-    public Box box;
+    // PK ?
+   // @ManyToOne
+   // @JoinColumn(name="id_type_box")
+    //public Box box;
 
 
     public HashSet<Pile> getEnsemble_pile() {
@@ -52,7 +68,7 @@ public class Box {
         this.ensemble_pile = ensemble_pile;
     }
     
-    public void addPile(Pile pile){
+ /*   public void addPile(Pile pile){
         this.ensemble_pile.add(pile);
-    }
+    }*/
 }

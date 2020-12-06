@@ -6,10 +6,14 @@
 package modele;
 
 import java.util.HashSet;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
+@Entity
 /**
  *
  * @author Val
@@ -19,6 +23,7 @@ public class Solution {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @OneToMany (mappedBy = "solution",cascade = CascadeType.PERSIST) // cascade sert à enregistrer aussi les données dans ensemble box
     private HashSet<Box> ensemble_box;
     private int prix;
     
@@ -26,12 +31,19 @@ public class Solution {
     public Solution( HashSet<Box> ensemble_box, int prix) {
         
         this.ensemble_box = ensemble_box;
+        this.prix = prix;      
+    }
+    
+    public Solution ( int prix)
+    {
+        this();
         this.prix = prix;
-        
     }
 
     public Solution() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.prix =0;
+        this.ensemble_box = new HashSet<Box>();
     }
 
     public long getId() {

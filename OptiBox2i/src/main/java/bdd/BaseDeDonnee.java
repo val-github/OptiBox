@@ -4,19 +4,25 @@
  * and open the template in the editor.
  */
 package bdd;
-
+/*
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import modele.Box;
-import modele.Instance;
+import java.sql.Statement;*/
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+//import modele.Box;
+import modele.Instance;/*
 import modele.Piece;
 import modele.Pile;
-import modele.Produit;
-import modele.Solution;
+import modele.Produit;*/
+
 
 /**
  *
@@ -25,6 +31,28 @@ import modele.Solution;
 public class BaseDeDonnee {
     
     
+    static public  List <Instance> afficherInstance(){
+         List <Instance> BaseReturn = new ArrayList<Instance>();
+        final String query = "SELECT * FROM Instance" ;
+        final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
+        final EntityManager em = emf.createEntityManager();
+        try{
+           Query querySent = em.createQuery(query);
+           BaseReturn = querySent.getResultList();
+        } catch(Exception ie){
+        System.out.println(ie.getMessage());}
+        finally {
+            if(em != null && em.isOpen()){
+                System.err.println("close");
+                em.close();
+            }
+            if(emf != null && emf.isOpen()){
+                emf.close();
+            }
+        }
+        return BaseReturn;
+    }
+    /*
     private Connection connect;
 
      public void connect() throws ClassNotFoundException, SQLException  {
@@ -149,6 +177,6 @@ public class BaseDeDonnee {
             return rs.getInt(1);
         }
         return 0;
-    }
+    }*/
       
 }

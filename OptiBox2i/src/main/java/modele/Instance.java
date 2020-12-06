@@ -16,12 +16,12 @@ import javax.persistence.Id;
  *
  * @author felix
  */
-@Entity
+//@Entity
 public class Instance implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+   // @Id
+   // @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nom;
     private HashSet<Type_Box> ensemble_type_box;
@@ -34,8 +34,18 @@ public class Instance implements Serializable {
     public String getNom() {
         return nom;
     }
-
-
+    
+public void display ()
+{
+    for (Type_Box Typeo : ensemble_type_box )
+    {
+           System.out.println(Typeo.toString());
+    }
+      for (Produit p : ensemble_produit )
+    {
+           System.out.println(p.toString());
+    }
+}
     @Override
     public int hashCode() {
         int hash = 0;
@@ -61,10 +71,17 @@ public class Instance implements Serializable {
         return "modele.Instance[ id=" + id + " ]";
     }
 
-    public Instance(String nom, HashSet<Box> ensemble_box, HashSet<Produit> ensemble_produit) {
+    
+     public Instance() {
+        this.nom = "Instance";
+        this.ensemble_type_box = new HashSet<>();
+        this.ensemble_produit = new HashSet<>();
+    }
+     
+    public Instance(String nom) {
+        this();
+        if ( nom != null)
         this.nom = nom;
-        this.ensemble_type_box = ensemble_type_box;
-        this.ensemble_produit = ensemble_produit;
     }
 
     public static long getSerialVersionUID() {
@@ -98,4 +115,9 @@ public class Instance implements Serializable {
     public void addProd (Produit prod){
         this.ensemble_produit.add(prod);
     }
+   public void addTypeBox (Type_Box box){
+       this.ensemble_type_box.add(box);
+   }
+   
 }
+

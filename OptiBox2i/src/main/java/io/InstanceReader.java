@@ -23,6 +23,7 @@ import modele.Box;
 import modele.Instance;
 import modele.Pile;
 import modele.Produit;
+import modele.Type_Box;
 
 /**
  * Classe qui permet de lire une instance pour le projet de POO3 2020/2021.
@@ -75,7 +76,7 @@ public class InstanceReader {
      * @throws ReaderException lorsque les donnees dans le fichier d'instance 
      * sont manquantes ou au mauvais format.
      */
-    public void readInstance() throws ReaderException {
+    public Instance readInstance() throws ReaderException {
         Scanner scanner = null;
         try {
             scanner = new Scanner(instanceFile);
@@ -84,13 +85,13 @@ public class InstanceReader {
         }
         // Dans la ligne qui suit vous recuperez le nom de l'instance.
         String nom = readStringInLine(scanner, "Nom");
-        HashSet<Box> ensemble_box = null;
-        HashSet<Produit> ensemble_produit = null;
+        //HashSet<Box> ensemble_box = null;
+        //HashSet<Produit> ensemble_produit = null;
         
         ////////////////////////////////////////////
         // TODO : Vous pouvez creer une instance.
         ////////////////////////////////////////////
-        Instance inst = new Instance(nom,ensemble_box,ensemble_produit);
+        Instance inst = new Instance(nom);
         
         readStringInLine(scanner, HEADER_BOX);
         // Dans la boucle qui suit, nous allons lire les donnees relatives a chaque box.
@@ -114,9 +115,12 @@ public class InstanceReader {
             int lon = elem.getLongueur();
             int haut = elem.getHauteur();
             double prix = elem.getPrix();
-            HashSet<Pile> hashset = new HashSet();
-            Box box = new Box(lon,haut,prix,hashset);
-            inst.addBox(box);
+            //HashSet<Pile> hashset = new HashSet();// dans la box
+            //Box box = new Box(lon,haut,prix);
+            Type_Box box= new Type_Box( lon, haut, prix);
+            //inst.addBox(box);
+            box.setId((long)Integer.valueOf(id.substring(1,id.length())));
+            inst.addTypeBox(box);
         }
         
         // Dans la boucle qui suit, nous allons lire les donnees relatives a chaque produit.
@@ -143,8 +147,10 @@ public class InstanceReader {
             int nb = elem.getQuantite();
             HashSet<Pile> hashset = new HashSet();
             Produit prod = new Produit(lon,haut,nb);
+            prod.setId((long)Integer.valueOf(id.substring(1,id.length())));
             inst.addProd(prod);
         }
+        return inst;
     }
 
     /**

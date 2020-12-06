@@ -16,12 +16,12 @@ import javax.persistence.Id;
  *
  * @author felix
  */
-@Entity
+//@Entity
 public class Pile implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+   // @Id
+   // @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
     private ArrayList<Piece> liste_piece;
