@@ -47,17 +47,5 @@ public class Solution {
     }
 
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setEnsemble_box(HashSet<Box> ensemble_box) {
-        this.ensemble_box = ensemble_box;
-    }
-
-    public void setPrix(int prix) {
-        this.prix = prix;
-    }
-
     
 }
