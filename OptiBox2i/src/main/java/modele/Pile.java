@@ -57,9 +57,8 @@ public class Pile implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "modele.Pile[ id=" + id + " ]";
-    }
+    
+
+    
     
 }

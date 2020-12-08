@@ -68,5 +68,12 @@ public class Solution {
         return prixTotal;
     }
 
+    @Override
+    public String toString() {
+        return "Solution{" + "ensemble_box=" + ensemble_box + ", prix=" + prix + '}';
+    }
+    
+    
+
     
 }

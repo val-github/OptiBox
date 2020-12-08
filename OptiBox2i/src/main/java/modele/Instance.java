@@ -56,12 +56,7 @@ public class Instance implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "modele.Instance[ id=" + id + " ]";
-    }
-
-    public Instance(String nom, HashSet<Box> ensemble_box, HashSet<Produit> ensemble_produit) {
+    public Instance(String nom, HashSet<Type_Box> ensemble_type_box, HashSet<Produit> ensemble_produit) {
         this.nom = nom;
         this.ensemble_type_box = ensemble_type_box;
         this.ensemble_produit = ensemble_produit;

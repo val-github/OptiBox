@@ -55,6 +55,11 @@ public class Produit {
     public void setListe_piece(HashSet<Piece> liste_piece) {
         this.liste_piece = liste_piece;
     }
+
+    @Override
+    public String toString() {
+        return "Produit{" + "Lprod=" + Lprod + ", Hprod=" + Hprod + ", NBprod=" + NBprod + '}';
+    }
     
     
     

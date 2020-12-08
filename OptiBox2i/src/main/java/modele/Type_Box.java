@@ -30,6 +30,17 @@ public class Type_Box implements Serializable {
     @OneToMany(mappedBy = "typeBox")
     private HashSet<Box> ensemble_box;
 
+    public Type_Box(int Lbox, int Hbox, double prixBox, HashSet<Box> ensemble_box) {
+        this.Lbox = Lbox;
+        this.Hbox = Hbox;
+        this.prixBox = prixBox;
+        this.ensemble_box = ensemble_box;
+    }
+
+    
+    
+    
+    
     public Long getId() {
         return id;
     }
@@ -69,12 +80,13 @@ public class Type_Box implements Serializable {
     public double getPrixBox() {
         return prixBox;
     }
-    
-    
 
     @Override
     public String toString() {
-        return "modele.Type_Box[ id=" + id + " ]";
+        return "Type_Box{" + "Lbox=" + Lbox + ", Hbox=" + Hbox + ", prixBox=" + prixBox + '}';
     }
+    
+    
+
     
 }

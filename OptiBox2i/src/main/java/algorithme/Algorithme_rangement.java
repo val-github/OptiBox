@@ -1,3 +1,5 @@
+package algorithme;
+
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -28,17 +30,17 @@ public class Algorithme_rangement {
      * @param instance
      * @return 
      */
-    private Solution solutionTriviale(Instance instance)
+    public static Solution solutionTriviale(Instance instance)
     {
         int i;
         HashSet<Produit> ensemble_produits = instance.getEnsemble_produit();
         HashSet<Type_Box> ensemble_type_box = instance.getEnsemble_type_box();
-        HashSet<Box> ensemble_box = null;
+        HashSet<Box> ensemble_box = new HashSet<Box>();
         
         
         for(Produit produit:ensemble_produits)
         {//On assigne les pièces aux piles de box
-            HashSet<Piece> liste_piece = produit.getListe_piece();//peut-être inutile
+            HashSet<Piece> liste_piece = new HashSet<Piece>();//peut-être inutile
             for(i=0;i<produit.getNBprod();i++)
             {//On crée le nombre de pièces renseignées dans produit dans l'attribut liste_piece
                 Piece p = new Piece(produit);
@@ -55,11 +57,11 @@ public class Algorithme_rangement {
                     {//On crée une entité box qui correspondra à cette boîte
                         
                         //On crée la pile
-                        ArrayList<Piece> liste_piece_pile = null;
+                        ArrayList<Piece> liste_piece_pile = new ArrayList<Piece>();
                         liste_piece_pile.add(p);
                         Pile pile = new Pile(liste_piece_pile);
                         //On crée l'ensemble de pile
-                        HashSet<Pile> ensemble_pile = null;
+                        HashSet<Pile> ensemble_pile = new HashSet<Pile>();
                         ensemble_pile.add(pile);
                         //On crée la box
                         Box box = new Box(type_box,ensemble_pile);

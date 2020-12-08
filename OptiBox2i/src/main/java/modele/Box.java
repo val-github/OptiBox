@@ -64,4 +64,11 @@ public class Box {
     public void addPile(Pile pile){
         this.ensemble_pile.add(pile);
     }
+
+    @Override
+    public String toString() {
+        return "Box{" + "typeBox=" + typeBox  + ", solution=" + solution + ", box=" + box + '}';
+    }
+    
+    
 }
