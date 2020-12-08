@@ -21,6 +21,7 @@ public class Box {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @ManyToOne
     private Type_Box typeBox;
     private HashSet<Pile> ensemble_pile;
 
@@ -30,6 +31,11 @@ public class Box {
         this.ensemble_pile = pile;
     }
 
+    public Box(Type_Box typeBox) {
+        this.typeBox = typeBox;
+    }
+
+    
     @ManyToOne
     @JoinColumn(name="id")
     public Solution solution;
@@ -43,6 +49,10 @@ public class Box {
         return ensemble_pile;
     }
 
+    public Type_Box getTypeBox() {
+        return typeBox;
+    }
+
     
 
  
@@ -54,4 +64,11 @@ public class Box {
     public void addPile(Pile pile){
         this.ensemble_pile.add(pile);
     }
+
+    @Override
+    public String toString() {
+        return "Box{" + "typeBox=" + typeBox  + ", solution=" + solution + ", box=" + box + '}';
+    }
+    
+    
 }

@@ -21,24 +21,32 @@ public class Piece {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
-    private Produit type;
+    private Produit produit;
 
-    public Piece( Produit type) {
+    public Piece( Produit produit) {
         
-        this.type = type;
+        this.produit = produit;
     }
     
  
 
-  
+    
 
-    public Produit getType() {
-        return type;
+    public Produit getProduit() {
+        return produit;
     }
 
-    public void setType(Produit type) {
-        this.type = type;
+    public void setProduit(Produit produit) {
+        this.produit = produit;
     }
+
+    @Override
+    public String toString() {
+        return "Piece{" + "id=" + id + '}';
+    }
+
+    
+    
     
     
 }

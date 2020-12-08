@@ -20,7 +20,7 @@ public class Solution {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private HashSet<Box> ensemble_box;
-    private int prix;
+    private double prix;
     
 
     public Solution( HashSet<Box> ensemble_box, int prix) {
@@ -30,9 +30,17 @@ public class Solution {
         
     }
 
-    public Solution() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+
+    public Solution(HashSet<Box> ensemble_box) {
+        this.ensemble_box = ensemble_box;
     }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+    
+    
 
     public long getId() {
         return id;
@@ -42,22 +50,30 @@ public class Solution {
         return ensemble_box;
     }
 
-    public int getPrix() {
+    public double getPrix() {
         return prix;
     }
 
-
-    public void setId(long id) {
-        this.id = id;
+    /**
+     * Calcul le prix de la solution
+     */
+    public double calculPrixSolution()
+    {
+        double prixTotal = 0;
+        for (Box box:this.ensemble_box)
+        {
+            prixTotal += box.getTypeBox().getPrixBox();
+        }
+        this.prix = prixTotal;
+        return prixTotal;
     }
 
-    public void setEnsemble_box(HashSet<Box> ensemble_box) {
-        this.ensemble_box = ensemble_box;
+    @Override
+    public String toString() {
+        return "Solution{" + "ensemble_box=" + ensemble_box + ", prix=" + prix + '}';
     }
-
-    public void setPrix(int prix) {
-        this.prix = prix;
-    }
+    
+    
 
     
 }
