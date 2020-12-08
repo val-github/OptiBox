@@ -45,6 +45,15 @@ public class Type_Box implements Serializable {
     this.prixBox = prixBox;
    
     }
+
+    public Type_Box(int Lbox, int Hbox, double prixBox, HashSet<Box> ensemble_box) {
+        this.Lbox = Lbox;
+        this.Hbox = Hbox;
+        this.prixBox = prixBox;
+        this.ensemble_box = ensemble_box;
+    }
+    
+    
     
     public Long getId() {
         return id;
