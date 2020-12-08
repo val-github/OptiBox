@@ -26,13 +26,16 @@ public class Pile implements Serializable {
     
     private ArrayList<Piece> liste_piece;
 
+    public Pile(ArrayList<Piece> liste_piece) {
+        this.liste_piece = liste_piece;
+    }
+
+    
+    
     public Long getId() {
         return id;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
 
     @Override
     public int hashCode() {
@@ -54,9 +57,8 @@ public class Pile implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "modele.Pile[ id=" + id + " ]";
-    }
+    
+
+    
     
 }

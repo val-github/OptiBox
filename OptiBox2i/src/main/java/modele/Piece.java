@@ -41,6 +41,14 @@ public class Piece {
     public void setProduit(Produit produit) {
         this.produit = produit;
     }
+
+    @Override
+    public String toString() {
+        return "Piece{" + "id=" + id + '}';
+    }
+
+    
+    
     
     
 }
