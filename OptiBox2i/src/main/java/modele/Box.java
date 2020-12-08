@@ -49,6 +49,10 @@ public class Box {
         return ensemble_pile;
     }
 
+    public Type_Box getTypeBox() {
+        return typeBox;
+    }
+
     
 
  

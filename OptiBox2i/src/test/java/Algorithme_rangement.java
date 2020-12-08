@@ -31,13 +31,14 @@ public class Algorithme_rangement {
     private Solution solutionTriviale(Instance instance)
     {
         int i;
-        HashSet<Produit> liste_produits = instance.getEnsemble_produit();
-        HashSet<Type_Box> liste_type_box = instance.getEnsemble_type_box();
+        HashSet<Produit> ensemble_produits = instance.getEnsemble_produit();
+        HashSet<Type_Box> ensemble_type_box = instance.getEnsemble_type_box();
+        HashSet<Box> ensemble_box = null;
         
         
-        for(Produit produit:liste_produits)
+        for(Produit produit:ensemble_produits)
         {//On assigne les pièces aux piles de box
-            HashSet<Piece> liste_piece = produit.getListe_piece();
+            HashSet<Piece> liste_piece = produit.getListe_piece();//peut-être inutile
             for(i=0;i<produit.getNBprod();i++)
             {//On crée le nombre de pièces renseignées dans produit dans l'attribut liste_piece
                 Piece p = new Piece(produit);
@@ -47,7 +48,7 @@ public class Algorithme_rangement {
             
             for(Piece p:liste_piece)
             {
-                for(Type_Box type_box:liste_type_box)
+                for(Type_Box type_box:ensemble_type_box)
                 {//On prend la première boîte qui peut accueillir la pièce
                     if (p.getProduit().getHprod()<type_box.getHbox() 
                             && p.getProduit().getLprod()<type_box.getLbox())
@@ -62,15 +63,18 @@ public class Algorithme_rangement {
                         ensemble_pile.add(pile);
                         //On crée la box
                         Box box = new Box(type_box,ensemble_pile);
-                        
-                        
-                        //Tâche suivant faire en sorte de terminer la boucle box
+                        //On ajoute à l'ensemble de box qui sera ajouté à la solution
+                        ensemble_box.add(box);
+                     
                     }
                 }
             }
             
         }
-        Solution solution= new Solution();
+        Solution solution= new Solution(ensemble_box);
+        
+        solution.setPrix(solution.calculPrixSolution()); 
+        
         return solution;
     }
     
