@@ -46,6 +46,10 @@ public class Solution {
         this.ensemble_box = new HashSet<Box>();
     }
 
+    public Solution(HashSet<Box> ensemble_box) {
+    this.ensemble_box = ensemble_box;
+    }
+            
     public void setPrix(double prix) {
         this.prix = prix;
     }
