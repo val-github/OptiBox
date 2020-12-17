@@ -7,32 +7,37 @@ package modele;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-//@Entity
+@Entity
 /**
  *test
  * @author Val
  */
 public class Produit {
-  //  @Id
-  //  @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int Lprod;
     private int Hprod;
     private int NBprod;
- //   @OneToMany(mappedBy="produit")
-    private HashSet<Piece> liste_piece;
+    @OneToMany//(mappedBy="produit")bug persistence.xml
+    private Set<Piece> liste_piece;
 
     public Produit(int Lprod, int Hprod, int NBprod) {
         this.Lprod = Lprod;
         this.Hprod = Hprod;
         this.NBprod = NBprod;
     }
+
+    public Produit() {
+    }
+    
 
     public int getLprod() {
         return Lprod;
@@ -54,7 +59,7 @@ public class Produit {
         this.id = id;
     }
 
-    public HashSet<Piece> getListe_piece() {
+    public Set<Piece> getListe_piece() {
         return liste_piece;
     }
 

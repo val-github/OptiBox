@@ -6,6 +6,7 @@
 package modele;
 
 import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,7 @@ public class Solution {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @OneToMany (mappedBy = "solution",cascade = CascadeType.PERSIST) // cascade sert à enregistrer aussi les données dans ensemble box
-    private HashSet<Box> ensemble_box;
+    private Set<Box> ensemble_box;
     private double prix;
     
 
@@ -60,7 +61,7 @@ public class Solution {
         return id;
     }
 
-    public HashSet<Box> getEnsemble_box() {
+    public Set<Box> getEnsemble_box() {
         return ensemble_box;
     }
 

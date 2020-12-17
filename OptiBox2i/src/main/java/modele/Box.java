@@ -7,6 +7,7 @@ package modele;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,9 +26,9 @@ public class Box {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
    
-  //  @ManyToOne
+   @ManyToOne
    private Type_Box typeBox;
-   private HashSet<Pile> ensemble_pile;
+   private Set<Pile> ensemble_pile;
     
 
 public Box( ) {
@@ -56,7 +57,7 @@ public Box( ) {
     //public Box box;
 
 
-    public HashSet<Pile> getEnsemble_pile() {
+    public Set<Pile> getEnsemble_pile() {
         return ensemble_pile;
     }
 

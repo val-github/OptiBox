@@ -22,7 +22,10 @@ import modele.Type_Box;
  * @author felix
  */
 public class Algorithme_rangement {
+    //à faire, emiler des produits pour avoir des box complètes
     
+    //stockage en base de données visualiser et réfléchir à un meilleur algorithme
+    //stockage instance, stockage solution associer plusieurs solutions à une même instance
     /**
      * Chaque unité de chaque produit est stockée dans un box qu’on 
      * achète spécialement pour elle et dont les dimensions permettent de l’accueillir.

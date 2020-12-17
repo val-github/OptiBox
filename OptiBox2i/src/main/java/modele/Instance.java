@@ -7,25 +7,30 @@ package modele;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author felix
  */
-//@Entity
+@Entity
 public class Instance implements Serializable {
 
     private static final long serialVersionUID = 1L;
-   // @Id
-   // @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nom;
-    private HashSet<Type_Box> ensemble_type_box;
-    private HashSet<Produit> ensemble_produit;
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private Set<Type_Box> ensemble_type_box;
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private Set<Produit> ensemble_produit;
 
     public Instance(String nom, HashSet<Type_Box> ensemble_type_box, HashSet<Produit> ensemble_produit) {
         this.nom = nom;
@@ -76,8 +81,10 @@ public void display ()
 
     @Override
     public String toString() {
-        return "modele.Instance[ id=" + id + " ]";
+        return "Instance{" + "nom=" + nom + ", ensemble_type_box=" + ensemble_type_box + ", ensemble_produit=" + ensemble_produit + '}';
     }
+
+    
 
     
      public Instance() {
@@ -100,7 +107,7 @@ public void display ()
 
     
 
-    public HashSet<Produit> getEnsemble_produit() {
+    public Set<Produit> getEnsemble_produit() {
         return ensemble_produit;
     }
 
@@ -114,7 +121,7 @@ public void display ()
         this.ensemble_produit = ensemble_produit;
     }
 
-    public HashSet<Type_Box> getEnsemble_type_box() {
+    public Set<Type_Box> getEnsemble_type_box() {
         return ensemble_type_box;
     }
     

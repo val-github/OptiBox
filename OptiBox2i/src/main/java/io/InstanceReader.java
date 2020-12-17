@@ -119,7 +119,7 @@ public class InstanceReader {
             //Box box = new Box(lon,haut,prix);
             Type_Box box= new Type_Box( lon, haut, prix);
             //inst.addBox(box);
-            box.setId((long)Integer.valueOf(id.substring(1,id.length())));
+            //box.setId((long)Integer.valueOf(id.substring(1,id.length())));
             inst.addTypeBox(box);
         }
         
@@ -147,7 +147,7 @@ public class InstanceReader {
             int nb = elem.getQuantite();
             HashSet<Pile> hashset = new HashSet();
             Produit prod = new Produit(lon,haut,nb);
-            prod.setId((long)Integer.valueOf(id.substring(1,id.length())));
+            //prod.setId((long)Integer.valueOf(id.substring(1,id.length())));
             inst.addProd(prod);
         }
         return inst;
@@ -405,9 +405,10 @@ public class InstanceReader {
      */
     public static void main(String[] args) {
         try {
-            InstanceReader reader = new InstanceReader("C:\\Users\\Val\\Documents\\devoir\\LE3_2\\POO\\OptiBox\\instancesinstance_test.csv");
-            reader.readInstance();
+            InstanceReader reader = new InstanceReader("../instances/instance_1.csv");
+            Instance instance = reader.readInstance();
             System.out.println("Instance lue avec success !");
+            System.out.println(instance);
         } catch (ReaderException ex) {
             System.out.println(ex.getMessage());
         }

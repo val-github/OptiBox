@@ -5,11 +5,13 @@
  */
 package Main;
 
+import io.InstanceReader;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import modele.Box;
+import modele.Instance;
 import modele.Solution;
 
 /**
@@ -26,15 +28,18 @@ public class TestBdd {
             try{
                 final EntityTransaction et = em.getTransaction();
                 try{
+                    
                     et.begin();
-                    Box b = new Box(1,2,3);
-                    Solution s = new Solution(12);
-                    em.persist(s);
+                    InstanceReader reader = new InstanceReader("../instances/instance_1.csv");
+                    Instance instance = reader.readInstance();
+                    em.persist(instance);
                     
                     et.commit();
+                    
                 }catch (Exception ex) {
                     et.rollback();
                     System.err.println("rollback");
+                    System.out.println(ex);
                 }
             } finally {
                 if(em != null && em.isOpen()){

@@ -27,6 +27,7 @@ public class Main {
      public static void main(String[] args) {
          Instance InstanceT = new Instance();
          try {
+             //user.dir normalement répertoire netbeans project
                 String currentDirectory = System.getProperty("user.dir") + "/../instances/instance_1.csv";
                 System.out.println("The current working directory is " + currentDirectory);
                 InstanceReader InstanceTest= new InstanceReader(currentDirectory);

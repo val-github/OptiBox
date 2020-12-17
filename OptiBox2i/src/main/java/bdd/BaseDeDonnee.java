@@ -11,6 +11,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;*/
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -52,6 +58,8 @@ public class BaseDeDonnee {
         }
         return BaseReturn;
     }
+    
+
     /*
     private Connection connect;
 
@@ -64,6 +72,7 @@ public class BaseDeDonnee {
         this.connect = DriverManager.getConnection(urlDatabase, user, pwd);
            
     }
+     
      
       private int ajouteBox(Box b) throws SQLException {
 
@@ -160,10 +169,10 @@ public class BaseDeDonnee {
         return 0;
     }
        
-         private int ajouteInstance(Instance n) throws SQLException {
+    private int ajouteInstance(Instance n) throws SQLException {
 
-        String sql = "Insert into instance (id,nom) "
-                + "VALUES (?,?)";
+        String sql = "Insert into instance (id,nom,ensemble_type_box,ensemble_produit) "
+                + "VALUES (?,?,?,?)";
 
         PreparedStatement pst = connect.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 

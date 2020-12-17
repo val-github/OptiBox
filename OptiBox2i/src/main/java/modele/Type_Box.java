@@ -7,6 +7,7 @@ package modele;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,18 +18,18 @@ import javax.persistence.OneToMany;
  *
  * @author felix
  */
-//@Entity
+@Entity
 public class Type_Box implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int Lbox;
     private int Hbox;
     private double prixBox;
-   // @OneToMany(mappedBy = "typeBox")
-    private HashSet<Box> ensemble_box;
+    @OneToMany//(mappedBy = "typeBox") bug persistence.xml
+    private Set<Box> ensemble_box;
 
     
     

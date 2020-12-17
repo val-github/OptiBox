@@ -7,6 +7,7 @@ package modele;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,15 +17,15 @@ import javax.persistence.Id;
  *
  * @author felix
  */
-//@Entity
+@Entity
 public class Pile implements Serializable {
 
     private static final long serialVersionUID = 1L;
-   // @Id
-   // @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private ArrayList<Piece> liste_piece;
+    private List<Piece> liste_piece;
 
     public Pile(ArrayList<Piece> liste_piece) {
         this.liste_piece = liste_piece;
