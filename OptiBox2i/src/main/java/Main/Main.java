@@ -37,7 +37,7 @@ public class Main {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
          
-        /* List <Instance> BaseReturn = new ArrayList<Instance>();
+        List <Instance> BaseReturn = new ArrayList<Instance>();
         final String query = "SELECT * FROM Instance" ;
         final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
         final EntityManager em = emf.createEntityManager();
@@ -54,7 +54,7 @@ public class Main {
             if(emf != null && emf.isOpen()){
                 emf.close();
             }
-        }*/
+        }
       
     }
              

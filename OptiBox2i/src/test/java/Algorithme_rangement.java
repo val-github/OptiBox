@@ -53,7 +53,7 @@ public class Algorithme_rangement {
             }
             
         }
-        Solution solution= new Solution();
+        Solution solution= new Solution(ensemble_box);
         return solution;
     }
     

@@ -73,6 +73,7 @@ public class InstanceReader {
     
     /**
      * Methode principale pour lire le fichier d'instance.
+     * @return 
      * @throws ReaderException lorsque les donnees dans le fichier d'instance 
      * sont manquantes ou au mauvais format.
      */
