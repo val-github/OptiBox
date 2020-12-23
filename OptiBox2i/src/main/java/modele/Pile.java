@@ -31,6 +31,9 @@ public class Pile implements Serializable {
         this.liste_piece = liste_piece;
     }
 
+    public Pile() {
+    }
+
     
     
     public Long getId() {
@@ -58,8 +61,26 @@ public class Pile implements Serializable {
         return true;
     }
 
+    //calculer la hauteur de la pile afin de la placer dans une boxe
+    public int getHPile(){
+        int h = 0;
+        for(Piece p:this.liste_piece){
+            h+=p.getProduit().getHprod();
+        }
+        return h;
+    }
     
-
+    public int getLPile(){
+        int L = 0;
+        for(Piece p:this.liste_piece){
+            if (p.getProduit().getLprod() > L){
+                L=p.getProduit().getLprod();
+            }
+        }
+        return L;
+    }
     
-    
+    public void addPiece(Piece piece){
+        this.liste_piece.add(piece);
+    }
 }

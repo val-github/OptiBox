@@ -10,8 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import modele.Produit;
-
 @Entity
 /**
  *
@@ -32,15 +30,13 @@ public class Piece {
 
     public Piece() {
     }
-    
- 
-
-    
 
     public Produit getProduit() {
         return produit;
     }
-
+    
+    
+    
     public void setProduit(Produit produit) {
         this.produit = produit;
     }

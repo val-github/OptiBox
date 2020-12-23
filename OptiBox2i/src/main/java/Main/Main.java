@@ -38,7 +38,7 @@ public class Main {
             }
          
         List <Instance> BaseReturn = new ArrayList<Instance>();
-        final String query = "SELECT * FROM Instance" ;
+        final String query = "SELECT * FROM INSTANCE" ;
         final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
         final EntityManager em = emf.createEntityManager();
         try{
