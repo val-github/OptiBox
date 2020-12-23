@@ -115,9 +115,12 @@ public class Algorithme_rangement {
                     Set<Pile> piles = box.getEnsemble_pile();
                     for (Pile pile:piles)
                     {
-                        if (pile.getHPile() < box.getTypeBox().getHbox())
+                        if (p.getProduit().getLprod() < box.getTypeBox().getLbox() - pile.getLPile())
                         {
-                            if (pile.getLPile() < box.getTypeBox().getLbox())
+                            Pile pile2 = new Pile();
+                            pile2.liste_piece.add(p);
+                            box.ensemble_pile.add(pile2);
+                            if (pile.getHPile() < box.getTypeBox().getHbox())
                             {
                                 pile.addPiece(p);
                                 indic = 1;

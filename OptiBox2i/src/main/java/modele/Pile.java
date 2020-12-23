@@ -25,7 +25,7 @@ public class Pile implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private List<Piece> liste_piece;
+    public List<Piece> liste_piece;
 
     public Pile(ArrayList<Piece> liste_piece) {
         this.liste_piece = liste_piece;

@@ -28,7 +28,7 @@ public class Box {
    
    @ManyToOne
    private Type_Box typeBox;
-   private Set<Pile> ensemble_pile;
+   public Set<Pile> ensemble_pile;
     
 
 public Box( ) {
