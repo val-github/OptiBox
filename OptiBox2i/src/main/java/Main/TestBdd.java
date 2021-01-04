@@ -22,15 +22,15 @@ public class TestBdd {
     
     public static void main(String[] args) 
     {
-        
-        final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
+        for (int i = 1; i < 11; i++){
+            final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
             final EntityManager em = emf.createEntityManager();
             try{
                 final EntityTransaction et = em.getTransaction();
                 try{
                     
                     et.begin();
-                    InstanceReader reader = new InstanceReader("../instances/instance_1.csv");
+                    InstanceReader reader = new InstanceReader("../instances/instance_" + i + ".csv");
                     Instance instance = reader.readInstance();
                     em.persist(instance);
                     
@@ -45,14 +45,16 @@ public class TestBdd {
                 if(em != null && em.isOpen()){
                 System.err.println("close");
                 em.close();
-            }
-        if(emf != null && emf.isOpen()){
-            emf.close();
+                }
+                if(emf != null && emf.isOpen()){
+                emf.close();
+                }
+            } 
         }
-    } 
+        
+        
             
     }
-    
     
 }
     

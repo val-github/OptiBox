@@ -73,7 +73,7 @@ public Box( ) {
         this.ensemble_pile = ensemble_pile;
     }
     
- /*   public void addPile(Pile pile){
+    public void addPile(Pile pile){
         this.ensemble_pile.add(pile);
-    }*/
+    }
 }

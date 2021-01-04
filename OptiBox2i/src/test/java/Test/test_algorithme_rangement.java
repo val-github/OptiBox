@@ -6,7 +6,7 @@
 package Test;
 
 
-import static algorithme.Algorithme_rangement.solutionTriviale;
+import static algorithme.Algorithme_rangement.solution2;
 import java.util.HashSet;
 import modele.Box;
 import modele.Instance;
@@ -44,7 +44,7 @@ public class test_algorithme_rangement {
         Instance instance = new Instance("Instance_Test", ensemble_type_box, ensemble_produit);
         
         System.out.println("hello");
-        Solution solution = solutionTriviale(instance);
+        Solution solution = solution2(instance);
         System.out.println(solution.toString());
     }
     

@@ -25,35 +25,38 @@ public class Main {
     
       
      public static void main(String[] args) {
-         Instance InstanceT = new Instance();
-         try {
-             //user.dir normalement répertoire netbeans project
-                String currentDirectory = System.getProperty("user.dir") + "/../instances/instance_1.csv";
+         for (int i = 1; i < 11; i++){
+            Instance Instance1 = new Instance();
+            try {
+                //user.dir normalement répertoire netbeans project
+                String currentDirectory = System.getProperty("user.dir") + "/../instances/instance_" + i + ".csv";
                 System.out.println("The current working directory is " + currentDirectory);
                 InstanceReader InstanceTest= new InstanceReader(currentDirectory);
-                InstanceT = InstanceTest.readInstance();
-                InstanceT.display();
+                Instance1 = InstanceTest.readInstance();
+                Instance1.display();
             } catch (ReaderException ex) {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
          
-        List <Instance> BaseReturn = new ArrayList<Instance>();
-        final String query = "SELECT * FROM INSTANCE" ;
-        final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
-        final EntityManager em = emf.createEntityManager();
-        try{
-           Query querySent = em.createQuery(query);
-           BaseReturn = querySent.getResultList();
-        } catch(Exception ie){
-        System.out.println(ie.getMessage());}
-        finally {
-            if(em != null && em.isOpen()){
-                System.err.println("close");
-                em.close();
+            List <Instance> BaseReturn = new ArrayList<Instance>();
+            final String query = "SELECT * FROM ROOT.INSTANCE" ;
+            final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
+            final EntityManager em = emf.createEntityManager();
+            try{
+            Query querySent = em.createQuery(query);
+            BaseReturn = querySent.getResultList();
+            } catch(Exception ie){
+            System.out.println(ie.getMessage());}
+            finally {
+                if(em != null && em.isOpen()){
+                    System.err.println("close");
+                    em.close();
+                }
+                if(emf != null && emf.isOpen()){
+                    emf.close();
+                }
             }
-            if(emf != null && emf.isOpen()){
-                emf.close();
-            }
+       
         }
       
     }

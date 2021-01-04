@@ -96,7 +96,6 @@ public class Algorithme_rangement {
         HashSet<Box> ensemble_box = new HashSet<Box>();
         HashSet<Box> ensemble_box_remplie = new HashSet<Box>();
         
-        
         for(Produit produit:ensemble_produits)
         {//On assigne les pièces aux piles de box
             HashSet<Piece> liste_piece = new HashSet<Piece>();//peut-être inutile
@@ -109,20 +108,40 @@ public class Algorithme_rangement {
         
             for(Piece p:liste_piece)
             {
+                //indicateur pour savoir si la piece est déja placée
                 int indic = 0;
+                //on parcourt les box déja achetés
                 for(Box box:ensemble_box_remplie)
                 {
+                    int L = 0;
+                    //on récupére les piles déja présentes dans le box
                     Set<Pile> piles = box.getEnsemble_pile();
+                    //on parcourt les piles déja placées dans le box
                     for (Pile pile:piles)
                     {
-                        if (p.getProduit().getLprod() < box.getTypeBox().getLbox() - pile.getLPile())
+                        L+=pile.getLPile();
+                        //on vérifie si la piéce peut être placée sur la pile
+                        if (p.getProduit().getLprod() < pile.getLPile())
                         {
-                            Pile pile2 = new Pile();
-                            pile2.liste_piece.add(p);
-                            box.ensemble_pile.add(pile2);
                             if (pile.getHPile() < box.getTypeBox().getHbox())
                             {
                                 pile.addPiece(p);
+                                indic = 1;
+                            }
+                        }
+                    }
+                    
+                    if (indic == 0)
+                    {
+                        //on vérifie si on peut placer la piéce sur une nouvelle pile dans le boxe
+                        if (L < box.getTypeBox().getLbox())
+                        {
+                            if (p.getProduit().getLprod()<box.getTypeBox().getLbox())
+                            {
+                                //On crée la pile
+                                Pile pile = new Pile();
+                                pile.addPiece(p);
+                                box.addPile(pile);
                                 indic = 1;
                             }
                         }

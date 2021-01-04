@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
  * @author felix
  */
 @Entity
-public class Type_Box implements Serializable {
+public class Type_Box implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -101,8 +101,5 @@ public class Type_Box implements Serializable {
        // return "modele.Type_Box[ id=" + id + " ]";
        return "modele.Type_Box [ id=" + id + " Lbox ="+ Lbox + " Hbox =" + Hbox +" PrixBox = "+ prixBox +" ]";
     }
-    
-    
-
     
 }
