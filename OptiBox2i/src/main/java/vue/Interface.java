@@ -149,6 +149,7 @@ public class Interface extends javax.swing.JFrame {
         {//test ne marche pas, peut être pas besoin
             
             enregistrerInstance(instancePath, instanceName);
+            rafraichirInstanceSelect();
         }
         //Ajouter Pop-up
     }//GEN-LAST:event_ajouterInstanceActionPerformed
@@ -168,7 +169,7 @@ public class Interface extends javax.swing.JFrame {
     
     private void rafraichirInstanceSelect()
     {
-        List <String> nameInstances = new ArrayList<String>();
+        List <String> nameInstances = new ArrayList<>();
         nameInstances = getNameInstances();
         for (String name : nameInstances)
         {
