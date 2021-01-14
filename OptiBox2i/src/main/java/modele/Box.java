@@ -16,11 +16,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
+
 /**
  *
  * @author Val
  */
+@Entity
 public class Box {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -51,10 +52,7 @@ public Box( ) {
     @JoinColumn(name="solution")//Que dans Many to one pour dire ça correspond à la colonne name ainsi 
     public Solution solution;
     
-    // PK ?
-   // @ManyToOne
-   // @JoinColumn(name="id_type_box")
-    //public Box box;
+ 
 
 
     public Set<Pile> getEnsemble_pile() {

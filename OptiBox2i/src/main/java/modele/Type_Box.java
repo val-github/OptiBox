@@ -98,7 +98,7 @@ public class Type_Box implements Serializable{
 
     @Override
     public String toString() {
-       // return "modele.Type_Box[ id=" + id + " ]";
+       
        return "modele.Type_Box [ id=" + id + " Lbox ="+ Lbox + " Hbox =" + Hbox +" PrixBox = "+ prixBox +" ]";
     }
     

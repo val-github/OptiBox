@@ -104,7 +104,7 @@ public class InstanceReader {
             // Notez que elem est un objet qui contient quatre attributs : 
             // un identifiant ; une longueur ; une hauteur et un prix
             // Vous pouvez acceder a ces attributs de la maniere suivante :
-            // elem.getIdentifiant()
+            // elem.getIdentifiant()f
             // elem.getLongueur()
             // elem.getHauteur()
             // elem.getPrix()

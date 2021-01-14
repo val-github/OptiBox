@@ -85,9 +85,7 @@ public void display ()
     public String toString() {
         return "Instance{" + "nom=" + nom + ", ensemble_type_box=" + ensemble_type_box + ", ensemble_produit=" + ensemble_produit + '}';
     }
-
     
-
     
      public Instance() {
         this.nom = "Instance";

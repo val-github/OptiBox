@@ -17,10 +17,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import io.InstanceReader;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 //import modele.Box;
@@ -59,6 +61,63 @@ public class BaseDeDonnee {
         return BaseReturn;
     }
     
+    static public boolean enregistrerInstance(String cheminInstance, String nomInstance)
+    {
+        final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
+            final EntityManager em = emf.createEntityManager();
+            try{
+                final EntityTransaction et = em.getTransaction();
+                try{
+                    
+                    et.begin();
+                    InstanceReader reader = new InstanceReader(cheminInstance);
+                    Instance instance = reader.readInstance();
+                    instance.setNom(nomInstance);
+                    System.out.println("marche");
+                    em.persist(instance);
+                    
+                    et.commit();
+                    
+                }catch (Exception ex) {
+                    et.rollback();
+                    System.err.println("rollback");
+                    System.out.println(ex);
+                    return false;
+                }
+            } finally {
+                if(em != null && em.isOpen()){
+                System.err.println("closeas");
+                em.close();
+                }
+                if(emf != null && emf.isOpen()){
+                emf.close();
+                }
+            }
+        return true;
+    }
+    
+    public static List <String> getNameInstances()
+    {
+        List <String> nameInstances = new ArrayList<String>();
+        final String query = "SELECT nom FROM Instance" ;
+        final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
+        final EntityManager em = emf.createEntityManager();
+        try{
+           Query querySent = em.createQuery(query);
+           nameInstances = querySent.getResultList();
+        } catch(Exception ie){
+        System.out.println(ie.getMessage());}
+        finally {
+            if(em != null && em.isOpen()){
+                System.err.println("close");
+                em.close();
+            }
+            if(emf != null && emf.isOpen()){
+                emf.close();
+            }
+        }
+        return nameInstances;
+    }
 
     /*
     private Connection connect;
@@ -187,5 +246,7 @@ public class BaseDeDonnee {
         }
         return 0;
     }*/
+
+
       
 }
