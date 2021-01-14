@@ -118,9 +118,9 @@ public class InstanceReader {
             double prix = elem.getPrix();
             //HashSet<Pile> hashset = new HashSet();// dans la box
             //Box box = new Box(lon,haut,prix);
-            Type_Box box= new Type_Box( lon, haut, prix);
-            //inst.addBox(box);
+            Type_Box box= new Type_Box( lon, haut, prix);      
             //box.setId((long)Integer.valueOf(id.substring(1,id.length())));
+            System.out.println("lon :"+ lon +"haut :"+haut +"prix"+prix);
             inst.addTypeBox(box);
         }
         
