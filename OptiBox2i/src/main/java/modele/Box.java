@@ -63,7 +63,10 @@ public Box( ) {
         return typeBox;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Box{" + "id=" + this.getTypeBox().getId() + ", longueur=" + this.getTypeBox().getLbox() + ", hauteur=" + this.getTypeBox().getHbox() + ", prix=" + this.getTypeBox().getPrixBox() + '}';
+    }
 
  
 

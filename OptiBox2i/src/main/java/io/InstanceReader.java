@@ -101,6 +101,11 @@ public class InstanceReader {
             if(elem == null) {
                 break;
             }
+            
+            if ("".equals(elem.getIdentifiant())){
+                break;
+            }
+            
             // Notez que elem est un objet qui contient quatre attributs : 
             // un identifiant ; une longueur ; une hauteur et un prix
             // Vous pouvez acceder a ces attributs de la maniere suivante :
@@ -116,10 +121,7 @@ public class InstanceReader {
             int lon = elem.getLongueur();
             int haut = elem.getHauteur();
             double prix = elem.getPrix();
-            //HashSet<Pile> hashset = new HashSet();// dans la box
-            //Box box = new Box(lon,haut,prix);
-            Type_Box box= new Type_Box( lon, haut, prix);
-            //inst.addBox(box);
+            Type_Box box= new Type_Box(id, lon, haut, prix);
             //box.setId((long)Integer.valueOf(id.substring(1,id.length())));
             inst.addTypeBox(box);
         }
@@ -205,6 +207,7 @@ public class InstanceReader {
         if(values.length == 0) {
             return null;
         }
+       
         if(tableauStringIdentique(values, echappement)) {
             return null;
         }

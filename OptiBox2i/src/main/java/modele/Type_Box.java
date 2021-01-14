@@ -24,7 +24,7 @@ public class Type_Box implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
     private int Lbox;
     private int Hbox;
     private double prixBox;
@@ -46,6 +46,14 @@ public class Type_Box implements Serializable{
     this.prixBox = prixBox;
    
     }
+    
+    public Type_Box(String id,int Lbox,int Hbox,double prixBox) {
+    this.id = id;
+    this.Lbox = Lbox;
+    this.Hbox = Hbox;
+    this.prixBox = prixBox;
+   
+    }
 
     public Type_Box(int Lbox, int Hbox, double prixBox, HashSet<Box> ensemble_box) {
         this.Lbox = Lbox;
@@ -56,11 +64,11 @@ public class Type_Box implements Serializable{
     
     
     
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -85,7 +85,12 @@ public class Solution {
 
     @Override
     public String toString() {
-        return "Solution{" + "ensemble_box=" + ensemble_box + ", prix=" + prix + '}';
+        String string = "Solution{" + "ensemble_box=";
+        for(Box box:ensemble_box){
+            string = string + box.toString();
+        } 
+        string =string + ", prix=" + prix + '}';
+        return string;
     }
     
     
