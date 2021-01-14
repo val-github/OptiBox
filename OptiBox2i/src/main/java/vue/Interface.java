@@ -5,14 +5,24 @@
  */
 package vue;
 
+import static algorithme.Algorithme_rangement.solution2;
 import static bdd.BaseDeDonnee.enregistrerInstance;
 import static bdd.BaseDeDonnee.getNameInstances;
 import io.InstanceReader;
 import io.ReaderException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import modele.Instance;
+import modele.Solution;
 
 /**
  *
@@ -25,6 +35,8 @@ public class Interface extends javax.swing.JFrame {
      */
     private String instancePath;
     private String instanceName;
+    private Instance instance;
+    private InstanceReader reader;
     public Interface() {
         initComponents();
         rafraichirInstanceSelect();
@@ -146,7 +158,7 @@ public class Interface extends javax.swing.JFrame {
         instanceName=nomInstance.getText();
         instancePath=cheminInstance.getText();
         if(instancePath!="cheminInstance")
-        {//test ne marche pas, peut être pas besoin
+        {
             
             enregistrerInstance(instancePath, instanceName);
             rafraichirInstanceSelect();
@@ -156,6 +168,47 @@ public class Interface extends javax.swing.JFrame {
 
     private void solutionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solutionActionPerformed
         rafraichirInstanceSelect();
+        
+        InstanceSelect.addActionListener(new ActionListener()
+        {     
+        @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                
+                 System.out.println("Valeur: " + InstanceSelect.getSelectedItem().toString());  
+                 String instanceZ = System.getProperty("user.dir") + "/../instances/" +InstanceSelect.getSelectedItem().toString();
+                       // reader = new InstanceReader( InstanceSelect.getSelectedItem().toString() );
+                       // instance = reader.readInstance();
+                
+                
+                    
+            final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
+            final EntityManager em = emf.createEntityManager();
+            try{
+                final EntityTransaction et = em.getTransaction();
+                try{
+                    
+                    et.begin();
+                    InstanceReader reader = new InstanceReader(instanceZ);
+                    instance = reader.readInstance();
+                   Solution solutionA = solution2(instance, 0);
+                    System.out.println("solution :" + solutionA );
+                }catch (Exception ex) {
+                    et.rollback();
+                    System.err.println("rollback");
+                    System.out.println(ex);
+                }
+            } finally {
+                if(em != null && em.isOpen()){
+                    System.err.println("close");
+                    em.close();
+                }
+            if(emf != null && emf.isOpen()){
+                emf.close();
+            }
+            }
+            }
+            });
     }//GEN-LAST:event_solutionActionPerformed
 
     private void nomInstanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomInstanceActionPerformed
@@ -172,11 +225,12 @@ public class Interface extends javax.swing.JFrame {
         List <String> nameInstances = new ArrayList<>();
         nameInstances = getNameInstances();
         InstanceSelect.removeAllItems();
-        System.out.println("nomsInstances");
-        for (String name : nameInstances)
+        File directory = new File(System.getProperty("user.dir") + "/../instances/");
+         String[] result = directory.list();
+        for (int i = 0; i < result.length; i++) 
         {
-            InstanceSelect.addItem(name);
-            System.out.println(name);
+            InstanceSelect.addItem(result[i]);
+
         }
     }
     
