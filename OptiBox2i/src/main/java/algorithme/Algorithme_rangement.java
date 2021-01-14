@@ -1,9 +1,12 @@
 package algorithme;
 
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import modele.Box;
 import modele.Instance;
@@ -35,8 +38,8 @@ public class Algorithme_rangement {
      * @param instance
      * @return 
      */
-    /*
-    public static Solution solutionTriviale(Instance instance)
+    
+    public static Solution solution1(Instance instance)
     {
         int i;
         Set<Produit> ensemble_produits = instance.getEnsemble_produit();
@@ -84,17 +87,51 @@ public class Algorithme_rangement {
         solution.setPrix(solution.calculPrixSolution()); 
         
         return solution;
-    }*/
+    }
     
     
     //2eme solution
-    public static Solution solution2(Instance instance)
+    public static Solution solution2(Instance instance, int indicTri)
     {
         int i;
         Set<Produit> ensemble_produits = instance.getEnsemble_produit();
         Set<Type_Box> ensemble_type_box = instance.getEnsemble_type_box();
         HashSet<Box> ensemble_box = new HashSet<Box>();
         HashSet<Box> ensemble_box_remplie = new HashSet<Box>();
+        
+        //algorithme de tri des produit par la longueur
+
+        boolean sorted = false;
+        int n = ensemble_box.size();
+             
+        List<Produit> lp = new ArrayList<>(ensemble_produits); 
+        while(!sorted) {
+            sorted = true;
+            for (int x = 0; x < n - 1; x++) {
+                Produit  p1 = lp.get(x);
+                Produit  p2 = lp.get(x+1);
+                if (p1.getLprod() > p2.getLprod()) {
+                    lp.set(x, p2);
+                    lp.set(x+1, p1);
+                    sorted = false;
+                }
+            }
+        }
+
+        
+        if (indicTri == 0){
+            ensemble_produits = new HashSet<>(triA(ensemble_produits));
+        }
+        
+        if (indicTri == 1){
+            ensemble_produits = new HashSet<>(triL(ensemble_produits));
+        }
+        
+        if (indicTri == 2){
+            ensemble_produits = new HashSet<>(triH(ensemble_produits));
+        }
+        
+        //ensemble produit trié par ordre croissant de longueur
         
         for(Produit produit:ensemble_produits)
         {//On assigne les pièces aux piles de box
@@ -146,8 +183,6 @@ public class Algorithme_rangement {
                             }
                         }
                     }
-                    
-                    
                 }
                 
                 if (indic == 0)
@@ -182,6 +217,67 @@ public class Algorithme_rangement {
         
         return solution;
     }
+    //algorithme de tri des produit par la longueur
+    public static List<Produit> triL(Set<Produit> ensemble_produits){
+        boolean sorted = false;
+        int n = ensemble_produits.size();
+             
+        List<Produit> lp = new ArrayList<>(ensemble_produits); 
+        while(!sorted) {
+            sorted = true;
+            for (int x = 0; x < n - 1; x++) {
+                Produit  p1 = lp.get(x);
+                Produit  p2 = lp.get(x+1);
+                if (p1.getLprod() > p2.getLprod()) {
+                    lp.set(x, p2);
+                    lp.set(x+1, p1);
+                    sorted = false;
+                }
+            }
+        }
+    return(lp);
+    }    
+    //algorithme de tri des produit par la hauteur
+    public static List<Produit> triH(Set<Produit> ensemble_produits){
+        boolean sorted = false;
+        int n = ensemble_produits.size();
+             
+        List<Produit> lp = new ArrayList<>(ensemble_produits); 
+        while(!sorted) {
+            sorted = true;
+            for (int x = 0; x < n - 1; x++) {
+                Produit  p1 = lp.get(x);
+                Produit  p2 = lp.get(x+1);
+                if (p1.getHprod() > p2.getHprod()) {
+                    lp.set(x, p2);
+                    lp.set(x+1, p1);
+                    sorted = false;
+                }
+            }
+        }
+    return(lp);
+    }
+    //algorithme de tri des produit par l'air
+    public static List<Produit> triA(Set<Produit> ensemble_produits){
+        boolean sorted = false;
+        int n = ensemble_produits.size();
+             
+        List<Produit> lp = new ArrayList<>(ensemble_produits); 
+        while(!sorted) {
+            sorted = true;
+            for (int x = 0; x < n - 1; x++) {
+                Produit  p1 = lp.get(x);
+                Produit  p2 = lp.get(x+1);
+                if (p1.getLprod()*p1.getHprod() > p2.getLprod()*p1.getHprod()) {
+                    lp.set(x, p2);
+                    lp.set(x+1, p1);
+                    sorted = false;
+                }
+            }
+        }
+    return(lp);
+    }
 }
 
-
+    
+        
