@@ -28,7 +28,7 @@ public class Produit {
     private int Lprod;
     private int Hprod;
     private int NBprod;
-    @OneToMany//(mappedBy="produit")bug persistence.xml
+    @OneToMany//(mappedBy="produit")//bug persistence.xml
     private Set<Piece> liste_piece;
 
     public Produit(int Lprod, int Hprod, int NBprod) {

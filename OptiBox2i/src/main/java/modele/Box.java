@@ -29,7 +29,7 @@ public class Box {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
    
-   @ManyToOne
+   @ManyToOne (cascade = CascadeType.PERSIST)
    private Type_Box typeBox;
    public Set<Pile> ensemble_pile;
     

@@ -31,7 +31,8 @@ public class Type_Box implements Serializable{
     private int Lbox;
     private int Hbox;
     private double prixBox;
-    @OneToMany//(mappedBy = "typeBox") bug persistence.xml
+    
+    @OneToMany//(mappedBy = "typeBox") //bug persistence.xml
     private Set<Box> ensemble_box;
 
     
@@ -44,9 +45,9 @@ public class Type_Box implements Serializable{
     }
     
     public Type_Box(int Lbox,int Hbox,double prixBox) {
-    this.Lbox = Lbox;
-    this.Hbox = Hbox;
-    this.prixBox = prixBox;
+        this.Lbox = Lbox;
+        this.Hbox = Hbox;
+        this.prixBox = prixBox;
    
     }
 
@@ -74,7 +75,7 @@ public class Type_Box implements Serializable{
         return hash;
     }
 
-    @Override
+    /*@Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Type_Box)) {
@@ -85,7 +86,7 @@ public class Type_Box implements Serializable{
             return false;
         }
         return true;
-    }
+    }*/
 
     public int getLbox() {
         return Lbox;

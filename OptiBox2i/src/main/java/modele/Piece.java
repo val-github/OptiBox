@@ -5,8 +5,7 @@
  */
 package modele;
 
-
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +21,7 @@ public class Piece {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.PERSIST)
     private Produit produit;
 
     public Piece(long id, Produit produit) {
