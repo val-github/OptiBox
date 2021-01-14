@@ -104,7 +104,7 @@ public class Algorithme_rangement {
         int n = ensemble_box.size();
              
         List<Box> lb = new ArrayList<>(ensemble_box); 
-        while(!sorted) {
+        while(sorted==false) {
             sorted = true;
             for (int x = 0; x < n - 1; x++) {
                 Box  b1 = lb.get(x);
@@ -117,7 +117,18 @@ public class Algorithme_rangement {
             }
         }
         ensemble_box = new HashSet<>(lb);
-
+        
+        /* P A R T I E    T E S T  */
+        System.out.println("Test Boxs ordonnées en fonction du prix");
+        System.out.println("taille" + lb.size());
+        for (Box box:lb)
+        {
+            
+            System.out.println(box.getTypeBox().toString());
+        }
+        
+        
+        /* * * * * * * ** * * * * * ** * */
         //produits triés par surface
         if (indicTri == 0){
             ensemble_produits = new HashSet<>(triA(ensemble_produits));
@@ -127,6 +138,8 @@ public class Algorithme_rangement {
         if (indicTri == 1){
             ensemble_produits = new HashSet<>(triL(ensemble_produits));
         }
+        
+        
         
         //produits triés par hauteur
         if (indicTri == 2){
