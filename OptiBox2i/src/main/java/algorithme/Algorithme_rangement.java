@@ -52,7 +52,7 @@ public class Algorithme_rangement {
             HashSet<Piece> liste_piece = new HashSet<Piece>();//peut-être inutile
             for(i=0;i<produit.getNBprod();i++)
             {//On crée le nombre de pièces renseignées dans produit dans l'attribut liste_piece
-                Piece p = new Piece(produit);
+                Piece p = new Piece(i,produit);
                 liste_piece.add(p);
             }
             produit.setListe_piece(liste_piece);
@@ -97,58 +97,58 @@ public class Algorithme_rangement {
         Set<Produit> ensemble_produits = instance.getEnsemble_produit();
         Set<Type_Box> ensemble_type_box = instance.getEnsemble_type_box();
         HashSet<Box> ensemble_box = new HashSet<Box>();
-        HashSet<Box> ensemble_box_remplie = new HashSet<Box>();
         
-        //algorithme de tri des produit par la longueur
+        //algorithme de tri des box par ordre croissant de prix
 
         boolean sorted = false;
         int n = ensemble_box.size();
              
-        List<Produit> lp = new ArrayList<>(ensemble_produits); 
+        List<Box> lb = new ArrayList<>(ensemble_box); 
         while(!sorted) {
             sorted = true;
             for (int x = 0; x < n - 1; x++) {
-                Produit  p1 = lp.get(x);
-                Produit  p2 = lp.get(x+1);
-                if (p1.getLprod() > p2.getLprod()) {
-                    lp.set(x, p2);
-                    lp.set(x+1, p1);
+                Box  b1 = lb.get(x);
+                Box  b2 = lb.get(x+1);
+                if (b1.getTypeBox().getPrixBox() > b2.getTypeBox().getPrixBox()) {
+                    lb.set(x, b2);
+                    lb.set(x+1, b1);
                     sorted = false;
                 }
             }
         }
+        ensemble_box = new HashSet<>(lb);
 
-        
+        //produits triés par surface
         if (indicTri == 0){
             ensemble_produits = new HashSet<>(triA(ensemble_produits));
         }
         
+        //produits triés par longeur
         if (indicTri == 1){
             ensemble_produits = new HashSet<>(triL(ensemble_produits));
         }
         
+        //produits triés par hauteur
         if (indicTri == 2){
             ensemble_produits = new HashSet<>(triH(ensemble_produits));
         }
         
-        //ensemble produit trié par ordre croissant de longueur
         
         for(Produit produit:ensemble_produits)
         {//On assigne les pièces aux piles de box
             HashSet<Piece> liste_piece = new HashSet<Piece>();//peut-être inutile
             for(i=0;i<produit.getNBprod();i++)
             {//On crée le nombre de pièces renseignées dans produit dans l'attribut liste_piece
-                Piece p = new Piece(produit);
+                Piece p = new Piece(i, produit);
                 liste_piece.add(p);
             }
-            produit.setListe_piece(liste_piece);
         
             for(Piece p:liste_piece)
             {
                 //indicateur pour savoir si la piece est déja placée
                 int indic = 0;
                 //on parcourt les box déja achetés
-                for(Box box:ensemble_box_remplie)
+                for(Box box:ensemble_box)
                 {
                     int L = 0;
                     //on récupére les piles déja présentes dans le box
@@ -177,6 +177,7 @@ public class Algorithme_rangement {
                             {
                                 //On crée la pile
                                 Pile pile = new Pile();
+                                System.out.println(p);
                                 pile.addPiece(p);
                                 box.addPile(pile);
                                 indic = 1;
@@ -204,7 +205,6 @@ public class Algorithme_rangement {
                             Box box = new Box(type_box,ensemble_pile);
                             //On ajoute à l'ensemble de box qui sera ajouté à la solution
                             ensemble_box.add(box);
-                     
                         }
                     }
                 }
@@ -217,7 +217,7 @@ public class Algorithme_rangement {
         
         return solution;
     }
-    //algorithme de tri des produit par la longueur
+    //algorithme de tri des produit par ordre décroissant de longueur
     public static List<Produit> triL(Set<Produit> ensemble_produits){
         boolean sorted = false;
         int n = ensemble_produits.size();
@@ -228,7 +228,7 @@ public class Algorithme_rangement {
             for (int x = 0; x < n - 1; x++) {
                 Produit  p1 = lp.get(x);
                 Produit  p2 = lp.get(x+1);
-                if (p1.getLprod() > p2.getLprod()) {
+                if (p1.getLprod() < p2.getLprod()) {
                     lp.set(x, p2);
                     lp.set(x+1, p1);
                     sorted = false;
@@ -237,7 +237,7 @@ public class Algorithme_rangement {
         }
     return(lp);
     }    
-    //algorithme de tri des produit par la hauteur
+    //algorithme de tri des produit par ordre décroissant de hauteur
     public static List<Produit> triH(Set<Produit> ensemble_produits){
         boolean sorted = false;
         int n = ensemble_produits.size();
@@ -248,7 +248,7 @@ public class Algorithme_rangement {
             for (int x = 0; x < n - 1; x++) {
                 Produit  p1 = lp.get(x);
                 Produit  p2 = lp.get(x+1);
-                if (p1.getHprod() > p2.getHprod()) {
+                if (p1.getHprod() < p2.getHprod()) {
                     lp.set(x, p2);
                     lp.set(x+1, p1);
                     sorted = false;
@@ -257,7 +257,7 @@ public class Algorithme_rangement {
         }
     return(lp);
     }
-    //algorithme de tri des produit par l'air
+    //algorithme de tri des produit par ordre décroissant de surface
     public static List<Produit> triA(Set<Produit> ensemble_produits){
         boolean sorted = false;
         int n = ensemble_produits.size();
@@ -268,7 +268,7 @@ public class Algorithme_rangement {
             for (int x = 0; x < n - 1; x++) {
                 Produit  p1 = lp.get(x);
                 Produit  p2 = lp.get(x+1);
-                if (p1.getLprod()*p1.getHprod() > p2.getLprod()*p1.getHprod()) {
+                if (p1.getLprod()*p1.getHprod() < p2.getLprod()*p1.getHprod()) {
                     lp.set(x, p2);
                     lp.set(x+1, p1);
                     sorted = false;

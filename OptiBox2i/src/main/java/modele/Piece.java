@@ -18,13 +18,13 @@ import javax.persistence.ManyToOne;
 public class Piece {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private Produit produit;
 
-    public Piece( Produit produit) {
-        
+    public Piece(long id, Produit produit) {
+        this.id=id;
         this.produit = produit;
     }
 

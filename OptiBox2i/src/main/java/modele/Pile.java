@@ -32,6 +32,7 @@ public class Pile implements Serializable {
     }
 
     public Pile() {
+        this.liste_piece = null;
     }
 
     
