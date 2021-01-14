@@ -103,30 +103,20 @@ public class Algorithme_rangement {
         boolean sorted = false;
         int n = ensemble_box.size();
              
-        List<Box> lb = new ArrayList<>(ensemble_box); 
+        List<Type_Box> lb = new ArrayList<>(ensemble_type_box); 
         while(sorted==false) {
             sorted = true;
             for (int x = 0; x < n - 1; x++) {
-                Box  b1 = lb.get(x);
-                Box  b2 = lb.get(x+1);
-                if (b1.getTypeBox().getPrixBox() > b2.getTypeBox().getPrixBox()) {
+                Type_Box  b1 = lb.get(x);
+                Type_Box  b2 = lb.get(x+1);
+                if (b1.getPrixBox() > b2.getPrixBox()) {
                     lb.set(x, b2);
                     lb.set(x+1, b1);
                     sorted = false;
                 }
             }
         }
-        ensemble_box = new HashSet<>(lb);
-        
-        /* P A R T I E    T E S T  */
-        System.out.println("Test Boxs ordonnées en fonction du prix");
-        System.out.println("taille" + lb.size());
-        for (Box box:lb)
-        {
-            
-            System.out.println(box.getTypeBox().toString());
-        }
-        
+        ensemble_type_box = new HashSet<>(lb);
         
         /* * * * * * * ** * * * * * ** * */
         //produits triés par surface
@@ -190,7 +180,6 @@ public class Algorithme_rangement {
                             {
                                 //On crée la pile
                                 Pile pile = new Pile();
-                                System.out.println(p);
                                 pile.addPiece(p);
                                 box.addPile(pile);
                                 indic = 1;
