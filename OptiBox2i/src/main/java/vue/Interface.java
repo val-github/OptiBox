@@ -171,8 +171,11 @@ public class Interface extends javax.swing.JFrame {
     {
         List <String> nameInstances = new ArrayList<>();
         nameInstances = getNameInstances();
+        InstanceSelect.removeAllItems();
+        System.out.println("nomsInstances");
         for (String name : nameInstances)
         {
+            InstanceSelect.addItem(name);
             System.out.println(name);
         }
     }

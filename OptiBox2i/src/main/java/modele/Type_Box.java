@@ -21,6 +21,9 @@ import javax.persistence.OneToMany;
 @Entity
 public class Type_Box implements Serializable{
 
+    
+    
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

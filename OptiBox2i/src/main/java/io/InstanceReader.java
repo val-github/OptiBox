@@ -94,6 +94,8 @@ public class InstanceReader {
         ////////////////////////////////////////////
         Instance inst = new Instance(nom);
         
+        
+        
         readStringInLine(scanner, HEADER_BOX);
         // Dans la boucle qui suit, nous allons lire les donnees relatives a chaque box.
         while(true) {

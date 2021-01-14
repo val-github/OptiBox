@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Test;
+package test_algorithme;
 
 
 import static algorithme.Algorithme_rangement.solution1;

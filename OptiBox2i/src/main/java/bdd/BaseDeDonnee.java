@@ -99,16 +99,16 @@ public class BaseDeDonnee {
     public static List <String> getNameInstances()
     {
         List <String> nameInstances = new ArrayList<String>();
-        final String query = "SELECT * FROM instance" ;
+        //final String query = "SELECT * FROM instance" ;
         final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
         final EntityManager em = emf.createEntityManager();
         
         
         try{
             
-           //Query querySent = em.createQuery("Select nom FROM instance");
+           Query querySent = em.createNativeQuery("SELECT NOM FROM INSTANCE");
+           nameInstances = querySent.getResultList();
            
-           nameInstances = em.createNamedQuery("instance.findAll").getResultList();//querySent.getResultList();
         } catch(Exception ie){
         System.out.println(ie.getMessage());}
         finally {
