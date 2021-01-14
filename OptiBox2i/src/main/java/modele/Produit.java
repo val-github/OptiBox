@@ -5,6 +5,8 @@
  */
 package modele;
 
+
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,7 +28,7 @@ public class Produit {
     private int Lprod;
     private int Hprod;
     private int NBprod;
-    @OneToMany//(mappedBy="produit")bug persistence.xml
+    @OneToMany//(mappedBy="produit")//bug persistence.xml
     private Set<Piece> liste_piece;
 
     public Produit(int Lprod, int Hprod, int NBprod) {

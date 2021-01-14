@@ -87,6 +87,9 @@ public void display ()
     }
     
     
+    
+    
+    
      public Instance() {
         this.nom = "Instance";
         this.ensemble_type_box = new HashSet<>();

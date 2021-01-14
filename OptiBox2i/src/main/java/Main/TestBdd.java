@@ -6,10 +6,13 @@
 package Main;
 
 import io.InstanceReader;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import modele.Box;
 import modele.Instance;
 import modele.Solution;
@@ -23,18 +26,32 @@ public class TestBdd {
     public static void main(String[] args) 
     {
         //for (int i = 1; i < 11; i++){
+        List <String> nameInstances = new ArrayList<String>();
             final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
             final EntityManager em = emf.createEntityManager();
+            //final String query ="SELECT * FROM INSTANCE";
             try{
                 final EntityTransaction et = em.getTransaction();
                 try{
+                    
                     
                     et.begin();
                     InstanceReader reader = new InstanceReader("../instances/instance_3.csv");
                     Instance instance = reader.readInstance();
                     em.persist(instance);
                     
+        
+            
+                   Query querySent = em.createNativeQuery("SELECT NOM FROM INSTANCE");
+                    nameInstances = querySent.getResultList();
+                    for(Object name:nameInstances)
+                    {
+                        System.out.println(name);
+                    }
+                    
                     et.commit();
+                    
+                    
                     
                 }catch (Exception ex) {
                     et.rollback();

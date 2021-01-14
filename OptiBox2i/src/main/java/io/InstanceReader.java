@@ -94,6 +94,8 @@ public class InstanceReader {
         ////////////////////////////////////////////
         Instance inst = new Instance(nom);
         
+        
+        
         readStringInLine(scanner, HEADER_BOX);
         // Dans la boucle qui suit, nous allons lire les donnees relatives a chaque box.
         while(true) {
@@ -123,6 +125,7 @@ public class InstanceReader {
             double prix = elem.getPrix();
             Type_Box box= new Type_Box(id, lon, haut, prix);
             //box.setId((long)Integer.valueOf(id.substring(1,id.length())));
+            System.out.println("lon :"+ lon +"haut :"+haut +"prix"+prix);
             inst.addTypeBox(box);
         }
         

@@ -4,20 +4,6 @@
  * and open the template in the editor.
  */
 package bdd;
-/*
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;*/
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import io.InstanceReader;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -25,11 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-//import modele.Box;
-import modele.Instance;/*
-import modele.Piece;
-import modele.Pile;
-import modele.Produit;*/
+import modele.Instance;
 
 
 /**
@@ -37,8 +19,6 @@ import modele.Produit;*/
  * @author alice
  */
 public class BaseDeDonnee {
-    
-    
     static public  List <Instance> afficherInstance(){
          List <Instance> BaseReturn = new ArrayList<Instance>();
         final String query = "SELECT * FROM Instance" ;
@@ -99,12 +79,16 @@ public class BaseDeDonnee {
     public static List <String> getNameInstances()
     {
         List <String> nameInstances = new ArrayList<String>();
-        final String query = "SELECT nom FROM Instance" ;
+        //final String query = "SELECT * FROM instance" ;
         final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
         final EntityManager em = emf.createEntityManager();
+        
+        
         try{
-           Query querySent = em.createQuery(query);
+            
+           Query querySent = em.createNativeQuery("SELECT NOM FROM INSTANCE");
            nameInstances = querySent.getResultList();
+           
         } catch(Exception ie){
         System.out.println(ie.getMessage());}
         finally {
