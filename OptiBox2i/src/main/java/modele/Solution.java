@@ -90,12 +90,25 @@ public class Solution {
         String string = "Solution{" + "ensemble_box=";
         for(Box box:ensemble_box){
             string = string + box.toString();
+            for (Pile p:box.getEnsemble_pile()){
+                string = string + p.toString();
+            }
         } 
         string =string + ", prix=" + prix + '}';
         return string;
     }
     
-    
+    public String afficher() {
+        String string = "Solution:\n";
+        for(Box box:ensemble_box){
+            string = string + box.toString() + "\n";
+            for (Pile p:box.getEnsemble_pile()){
+                string = string + p.toString() + "\n";
+            }
+        } 
+        string =string + ", prix:" + prix;
+        return string;
+    }
 
     
 }

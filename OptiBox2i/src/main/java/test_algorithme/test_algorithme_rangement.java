@@ -6,10 +6,8 @@
 package test_algorithme;
 
 
-import static algorithme.Algorithme_rangement.solution1;
 import static algorithme.Algorithme_rangement.solution2;
 import io.InstanceReader;
-import java.util.HashSet;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -17,9 +15,7 @@ import javax.persistence.Persistence;
 import modele.Box;
 import modele.Instance;
 import modele.Pile;
-import modele.Produit;
 import modele.Solution;
-import modele.Type_Box;
 
 /**
  *
@@ -69,6 +65,9 @@ public class test_algorithme_rangement {
         for (Box box: solutionA.getEnsemble_box()){
             System.out.println("box:");
             System.out.println(box.toString());
+            for (Pile pile:box.getEnsemble_pile()){
+                System.out.println();
+            }
         }
         System.out.println(solutionA.toString());
         

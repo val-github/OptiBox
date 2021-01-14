@@ -13,6 +13,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import modele.Instance;
+import io.InstanceReader;
 
 
 /**

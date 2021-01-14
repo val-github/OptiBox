@@ -100,40 +100,27 @@ public class Algorithme_rangement {
         
         //algorithme de tri des box par ordre croissant de prix
 
-        boolean sorted = false;
-        int n = ensemble_box.size();
-             
-        List<Type_Box> lb = new ArrayList<>(ensemble_type_box); 
-        while(sorted==false) {
-            sorted = true;
-            for (int x = 0; x < n - 1; x++) {
-                Type_Box  b1 = lb.get(x);
-                Type_Box  b2 = lb.get(x+1);
-                if (b1.getPrixBox() > b2.getPrixBox()) {
-                    lb.set(x, b2);
-                    lb.set(x+1, b1);
-                    sorted = false;
-                }
-            }
-        }
-        ensemble_type_box = new HashSet<>(lb);
+        
+        
         
         /* * * * * * * ** * * * * * ** * */
         //produits triés par surface
         if (indicTri == 0){
             ensemble_produits = new HashSet<>(triA(ensemble_produits));
+            ensemble_type_box = new HashSet<>(triTBP(ensemble_type_box));
         }
         
         //produits triés par longeur
         if (indicTri == 1){
             ensemble_produits = new HashSet<>(triL(ensemble_produits));
+            ensemble_type_box = new HashSet<>(triTBL(ensemble_type_box));
         }
-        
         
         
         //produits triés par hauteur
         if (indicTri == 2){
             ensemble_produits = new HashSet<>(triH(ensemble_produits));
+            ensemble_type_box = new HashSet<>(triTBH(ensemble_type_box));
         }
         
         
@@ -150,6 +137,10 @@ public class Algorithme_rangement {
             {
                 //indicateur pour savoir si la piece est déja placée
                 int indic = 0;
+                
+                
+                ensemble_box = new HashSet<>(triBP(ensemble_box));
+                
                 //on parcourt les box déja achetés
                 for(Box box:ensemble_box)
                 {
@@ -278,6 +269,133 @@ public class Algorithme_rangement {
             }
         }
     return(lp);
+    }
+    //fonction pour trier des Type_Box par ordre décroissant de longueur
+    public static List<Type_Box> triTBL(Set<Type_Box> ensemble_box){
+        int n = ensemble_box.size();
+        boolean sorted = false;
+             
+        List<Type_Box> lb = new ArrayList<>(ensemble_box); 
+        
+        while(sorted==false) {
+            sorted = true;
+            for (int x = 0; x < n - 1; x++) {
+                Type_Box  b1 = lb.get(x);
+                Type_Box  b2 = lb.get(x+1);
+                if (b1.getLbox() < b2.getLbox()) {
+                    lb.set(x, b2);
+                    lb.set(x+1, b1);
+                    sorted = false;
+                }
+            }
+        }
+        return lb;
+    }
+    //fonction pour trier des Type_Box par ordre décroissant de longueur
+    public static List<Type_Box> triTBH(Set<Type_Box> ensemble_box){
+        int n = ensemble_box.size();
+        boolean sorted = false;
+             
+        List<Type_Box> lb = new ArrayList<>(ensemble_box); 
+        
+        while(sorted==false) {
+            sorted = true;
+            for (int x = 0; x < n - 1; x++) {
+                Type_Box  b1 = lb.get(x);
+                Type_Box  b2 = lb.get(x+1);
+                if (b1.getHbox() < b2.getHbox()) {
+                    lb.set(x, b2);
+                    lb.set(x+1, b1);
+                    sorted = false;
+                }
+            }
+        }
+        return lb;
+    }
+    //fonction pour trier des Type_Box par ordre croissant de prix
+    public static List<Type_Box> triTBP(Set<Type_Box> ensemble_box){
+        int n = ensemble_box.size();
+        boolean sorted = false;
+             
+        List<Type_Box> lb = new ArrayList<>(ensemble_box); 
+        
+        while(sorted==false) {
+            sorted = true;
+            for (int x = 0; x < n - 1; x++) {
+                Type_Box  b1 = lb.get(x);
+                Type_Box  b2 = lb.get(x+1);
+                if (b1.getLbox() > b2.getLbox()) {
+                    lb.set(x, b2);
+                    lb.set(x+1, b1);
+                    sorted = false;
+                }
+            }
+        }
+        return lb;
+    }
+    
+    //fonction pour trier des Box par ordre décroissant de longueur
+    public static List<Box> triBL(Set<Box> ensemble_box){
+        int n = ensemble_box.size();
+        boolean sorted = false;
+             
+        List<Box> lb = new ArrayList<>(ensemble_box); 
+        
+        while(sorted==false) {
+            sorted = true;
+            for (int x = 0; x < n - 1; x++) {
+                Box  b1 = lb.get(x);
+                Box  b2 = lb.get(x+1);
+                if (b1.getTypeBox().getLbox() < b2.getTypeBox().getLbox()) {
+                    lb.set(x, b2);
+                    lb.set(x+1, b1);
+                    sorted = false;
+                }
+            }
+        }
+        return lb;
+    }
+    //fonction pour trier des Box par ordre décroissant de longueur
+    public static List<Box> triBH(Set<Box> ensemble_box){
+        int n = ensemble_box.size();
+        boolean sorted = false;
+             
+        List<Box> lb = new ArrayList<>(ensemble_box); 
+        
+        while(sorted==false) {
+            sorted = true;
+            for (int x = 0; x < n - 1; x++) {
+                Box  b1 = lb.get(x);
+                Box  b2 = lb.get(x+1);
+                if (b1.getTypeBox().getHbox() < b2.getTypeBox().getHbox()) {
+                    lb.set(x, b2);
+                    lb.set(x+1, b1);
+                    sorted = false;
+                }
+            }
+        }
+        return lb;
+    }
+    //fonction pour trier des Box par ordre croissant de prix
+    public static List<Box> triBP(Set<Box> ensemble_box){
+        int n = ensemble_box.size();
+        boolean sorted = false;
+             
+        List<Box> lb = new ArrayList<>(ensemble_box); 
+        
+        while(sorted==false) {
+            sorted = true;
+            for (int x = 0; x < n - 1; x++) {
+                Box  b1 = lb.get(x);
+                Box  b2 = lb.get(x+1);
+                if (b1.getTypeBox().getPrixBox() < b2.getTypeBox().getPrixBox()) {
+                    lb.set(x, b2);
+                    lb.set(x+1, b1);
+                    sorted = false;
+                }
+            }
+        }
+        return lb;
     }
 }
 

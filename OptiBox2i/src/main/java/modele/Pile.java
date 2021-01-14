@@ -86,4 +86,9 @@ public class Pile implements Serializable {
     public void addPiece(Piece piece){
         this.liste_piece.add(piece);
     }
+    
+    @Override
+    public String toString() {
+        return "Pile{" + "pieces:" + liste_piece + '}';
+    }
 }

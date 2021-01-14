@@ -41,6 +41,7 @@ public class Interface extends javax.swing.JFrame {
         initComponents();
         rafraichirInstanceSelect();
     }
+    public Solution solutionA;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,6 +58,7 @@ public class Interface extends javax.swing.JFrame {
         InstanceSelect = new javax.swing.JComboBox<>();
         solution = new javax.swing.JButton();
         cheminInstance = new javax.swing.JTextField();
+        affichageSolution = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(218, 249, 253));
@@ -134,17 +136,30 @@ public class Interface extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
+        affichageSolution.setText("jTextField1");
+        affichageSolution.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                affichageSolutionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(432, 432, 432)
+                .addComponent(affichageSolution, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(460, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(affichageSolution, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(187, Short.MAX_VALUE))
         );
 
         pack();
@@ -191,7 +206,7 @@ public class Interface extends javax.swing.JFrame {
                     et.begin();
                     InstanceReader reader = new InstanceReader(instanceZ);
                     instance = reader.readInstance();
-                   Solution solutionA = solution2(instance, 0);
+                    solutionA = solution2(instance, 0);
                     System.out.println("solution :" + solutionA );
                 }catch (Exception ex) {
                     et.rollback();
@@ -218,6 +233,13 @@ public class Interface extends javax.swing.JFrame {
     private void cheminInstanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cheminInstanceActionPerformed
         
     }//GEN-LAST:event_cheminInstanceActionPerformed
+
+    private void affichageSolutionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_affichageSolutionActionPerformed
+        // TODO add your handling code here:
+        while(true){
+            System.out.println(solutionA.afficher());
+        }
+    }//GEN-LAST:event_affichageSolutionActionPerformed
 
     
     private void rafraichirInstanceSelect()
@@ -272,6 +294,7 @@ public class Interface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> InstanceSelect;
+    private javax.swing.JTextField affichageSolution;
     private javax.swing.JButton ajouterInstance;
     private javax.swing.JTextField cheminInstance;
     private javax.swing.JPanel jPanel1;
