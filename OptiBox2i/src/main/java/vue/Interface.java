@@ -43,7 +43,7 @@ public class Interface extends javax.swing.JFrame {
         rafraichirInstanceSelect();
     }
     public Solution solutionA;
-    private 
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,8 +60,6 @@ public class Interface extends javax.swing.JFrame {
         InstanceSelect = new javax.swing.JComboBox<>();
         solution = new javax.swing.JButton();
         cheminInstance = new javax.swing.JTextField();
-        affichageSolution = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         affichageSolution = new javax.swing.JTextArea();
 
@@ -105,13 +103,6 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-        });
-
-            }
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -125,33 +116,21 @@ public class Interface extends javax.swing.JFrame {
                 .addComponent(ajouterInstance)
                 .addGap(62, 62, 62)
                 .addComponent(InstanceSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(solution)
-                .addContainerGap(556, Short.MAX_VALUE))
                 .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(solution))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(solution)
+                .addContainerGap(574, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(InstanceSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(34, 34, 34)
+                            .addComponent(InstanceSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
                             .addComponent(solution)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(InstanceSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(solution)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,9 +138,7 @@ public class Interface extends javax.swing.JFrame {
                             .addComponent(ajouterInstance))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cheminInstance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
-                        .addComponent(cheminInstance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         affichageSolution.setColumns(20);
@@ -174,9 +151,8 @@ public class Interface extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 792, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(457, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,8 +188,8 @@ public class Interface extends javax.swing.JFrame {
         System.out.println("instance");
         
         
-        //System.out.println("Valeur: " + InstanceSelect.getSelectedItem().toString());  
-                 //String instanceZ = System.getProperty("user.dir") + "/../instances/" +InstanceSelect.getSelectedItem().toString();
+        System.out.println("Valeur: " + InstanceSelect.getSelectedItem().toString());  
+        String instanceZ = System.getProperty("user.dir") + "/../instances/" +InstanceSelect.getSelectedItem().toString();
                        // reader = new InstanceReader( InstanceSelect.getSelectedItem().toString() );
                        // instance = reader.readInstance();
                 
@@ -228,7 +204,8 @@ public class Interface extends javax.swing.JFrame {
                     et.begin();
                     
                     
-                    
+                    InstanceReader reader = new InstanceReader(instanceZ);
+                    instance = reader.readInstance();
                     solutionA = solution2(instance, 0);
                     em.persist(solutionA);
                     String affichage = solutionA.afficher();
@@ -270,21 +247,18 @@ public class Interface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_affichageSolutionActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     
     private void rafraichirInstanceSelect()
     {
-        List <String> nameInstances = new ArrayList<>();
+          List <String> nameInstances = new ArrayList<>();
         nameInstances = getNameInstances();
         InstanceSelect.removeAllItems();
-        //File directory = new File(System.getProperty("user.dir") + "/../instances/");
-         //String[] result = directory.list();
-        for (String name:nameInstances) 
+        System.out.println("nomsInstances");
+         File directory = new File(System.getProperty("user.dir") + "/../instances/");
+         String[] result = directory.list();
+        for (int i = 0; i < result.length; i++) 
         {
-            InstanceSelect.addItem(name);
+        InstanceSelect.addItem(result[i]);
 
         }
     }

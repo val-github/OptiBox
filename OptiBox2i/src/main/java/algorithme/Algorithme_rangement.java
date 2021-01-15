@@ -132,7 +132,8 @@ public class Algorithme_rangement {
                 Piece p = new Piece(i, produit);
                 liste_piece.add(p);
             }
-        
+            
+            
             for(Piece p:liste_piece){
                 //indicateur pour savoir si la piece est déja placée
                 int indic = 0;
@@ -142,8 +143,9 @@ public class Algorithme_rangement {
                 ensemble_box = new HashSet<>(triBL(ensemble_box));
                 
                 //on parcourt les box déja achetés
-                while(indic == 0){
+                
                     for(Box box:ensemble_box){
+                        while(indic == 0){
                         System.out.println("Box" + box.toString());
                         if (indic == 0){
                             int Loccupee = 0;
@@ -411,6 +413,155 @@ public class Algorithme_rangement {
             }
         }
         return lb;
+    }
+    
+    public static Solution solution3(Instance instance, int indicTri)
+    {
+        int i;
+        Set<Produit> ensemble_produits = instance.getEnsemble_produit();
+        Set<Type_Box> ensemble_type_box = instance.getEnsemble_type_box();
+        HashSet<Box> ensemble_box = new HashSet<Box>();
+        
+        //algorithme de tri des box par ordre croissant de prix
+
+        
+        
+        
+        /* * * * * * * ** * * * * * ** * */
+        //produits triés par surface
+        if (indicTri == 0){
+            ensemble_produits = new HashSet<>(triA(ensemble_produits));
+            ensemble_type_box = new HashSet<>(triTBP(ensemble_type_box));
+        }
+        
+        //produits et Type_Box triés par longeur (décroissant)
+        if (indicTri == 1){
+            ensemble_produits = new HashSet<>(triL(ensemble_produits));
+            ensemble_type_box = new HashSet<>(triTBL(ensemble_type_box));
+        }
+        
+        
+        //produits triés par hauteur
+        if (indicTri == 2){
+            ensemble_produits = new HashSet<>(triH(ensemble_produits));
+            ensemble_type_box = new HashSet<>(triTBH(ensemble_type_box));
+        }
+        
+        
+        for(Produit produit:ensemble_produits){//On assigne les pièces aux piles de box
+            int id = 0;
+            HashSet<Piece> liste_piece = new HashSet<Piece>();//peut-être inutile
+            for(i=0;i<produit.getNBprod();i++)
+            {//On crée le nombre de pièces renseignées dans produit dans l'attribut liste_piece
+                Piece p = new Piece(i, produit);
+                liste_piece.add(p);
+            }
+            
+            
+            for(Piece p:liste_piece){
+                //indicateur pour savoir si la piece est déja placée
+                
+                System.out.println("\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
+                System.out.println("nouvelle piece");
+                //tri des box par ordre croisannt de longueur
+                ensemble_box = new HashSet<>(triBL(ensemble_box));
+                
+                //on parcourt les box déja achetés
+                
+                    for(Box box:ensemble_box){
+                        int flag=0;
+                        int Loccupee = 0;
+                        while(flag==0)
+                        {
+                            
+                        System.out.println("Box" + box.toString());
+                        
+                            
+                            System.out.println("vérif piles");
+                            //on parcourt les piles déja placées dans le box
+                            for (Pile pile:box.getEnsemble_pile())
+                            {
+                                Loccupee = Loccupee + pile.getLPileBase();
+                                System.out.println("getLPileBase" + pile.getLPileBase());
+                                System.out.println("Loccupee:" + Loccupee);
+                                //on vérifie si la piéce peut être placée sur la pile
+                                
+                                    if (p.getProduit().getLprod() <= pile.getLPileSommet())
+                                    {
+                                        System.out.println("piece peut tenir sur la pile");
+                                        if (pile.getHPile() + p.getProduit().getHprod() < box.getTypeBox().getHbox())
+                                        {   
+                                            System.out.println("\tajout dans la pile");
+                                            pile.addPiece(p);
+                                            break;
+                                        }
+                                    }
+                                
+                            }
+                    
+                            
+                                //on vérifie si on peut placer la piéce sur une nouvelle pile dans le boxe
+                                int L = p.getProduit().getLprod();
+                                System.out.println("piece " + L);
+                                System.out.println("occupée " + Loccupee);
+                                System.out.println("getTypeBox.getLbox " + box.getTypeBox().getLbox());
+                                if (L + Loccupee <= box.getTypeBox().getLbox())
+                                {
+                                    //On crée la pile
+                                    System.out.println("\tcréation pile");
+                                    Pile pile = new Pile();
+                                    pile.addPiece(p);
+                                    box.addPile(pile);
+                                    
+                                }
+                                else
+                                {
+                                    flag=1;
+                                }
+                        }
+                    }
+                            
+                        
+                        
+                
+                
+                
+                
+                    for(Type_Box type_box:ensemble_type_box)
+                    {//On prend la première boîte qui peut accueillir la pièce
+                        if (p.getProduit().getHprod()<type_box.getHbox() 
+                            && p.getProduit().getLprod()<type_box.getLbox())
+                        {//On crée une entité box qui correspondra à cette boîte
+                            
+                                //On crée la pile
+                                ArrayList<Piece> liste_piece_pile = new ArrayList<Piece>();
+                                liste_piece_pile.add(p);
+                                Pile pile = new Pile(liste_piece_pile);
+                                //On crée l'ensemble de pile
+                                HashSet<Pile> ensemble_pile = new HashSet<Pile>();
+                                ensemble_pile.add(pile);
+                                //On crée la box
+                                Box box1 = new Box(type_box,ensemble_pile);
+                                //On ajoute à l'ensemble de box qui sera ajouté à la solution
+                                ensemble_box.add(box1);
+                                System.out.println("\t\tcréation box");
+                                
+                            
+                            
+                        }
+                    }
+                 
+             
+            
+        }
+        
+        
+        
+    }
+        Solution solution= new Solution(ensemble_box);
+        
+        solution.setPrix(solution.calculPrixSolution()); 
+        return solution;
     }
 }
 

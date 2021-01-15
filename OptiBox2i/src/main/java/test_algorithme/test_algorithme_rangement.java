@@ -7,6 +7,7 @@ package test_algorithme;
 
 
 import static algorithme.Algorithme_rangement.solution2;
+import static algorithme.Algorithme_rangement.solution3;
 import io.InstanceReader;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -26,7 +27,7 @@ public class test_algorithme_rangement {
         
         
         
-        for (int i = 8; i<9; i++){
+       // for (int i = 8; i<9; i++){
             Instance instance = new Instance();
             final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
             final EntityManager em = emf.createEntityManager();
@@ -35,7 +36,7 @@ public class test_algorithme_rangement {
                 try{
                     
                     et.begin();
-                    InstanceReader reader = new InstanceReader("../instances/instance_" + i + ".csv");
+                    InstanceReader reader = new InstanceReader("../instances/instance_4.csv");
                     instance = reader.readInstance();
                 
                     
@@ -58,11 +59,11 @@ public class test_algorithme_rangement {
             
         System.out.println("instance en cours de traitement:\n" + instance.toString() + "\n");
         
-        System.out.println("résultats instance " + i + " :\n\n");
+        System.out.println("résultats instance 4 :\n\n");
         
         
         System.out.println("test triL");
-        Solution solutionL = solution2(instance, 1);
+        Solution solutionL = solution3(instance, 1);
         System.out.println(solutionL.afficher());
         
         
