@@ -8,6 +8,7 @@ package vue;
 import static algorithme.Algorithme_rangement.solution2;
 import static bdd.BaseDeDonnee.enregistrerInstance;
 import static bdd.BaseDeDonnee.getNameInstances;
+import com.sun.beans.finder.FieldFinder;
 import io.InstanceReader;
 import io.ReaderException;
 import java.awt.event.ActionEvent;
@@ -42,6 +43,7 @@ public class Interface extends javax.swing.JFrame {
         rafraichirInstanceSelect();
     }
     public Solution solutionA;
+    private 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,7 +60,9 @@ public class Interface extends javax.swing.JFrame {
         InstanceSelect = new javax.swing.JComboBox<>();
         solution = new javax.swing.JButton();
         cheminInstance = new javax.swing.JTextField();
-        affichageSolution = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        affichageSolution = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(218, 249, 253));
@@ -100,6 +104,13 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -113,19 +124,26 @@ public class Interface extends javax.swing.JFrame {
                 .addComponent(ajouterInstance)
                 .addGap(62, 62, 62)
                 .addComponent(InstanceSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(solution)
-                .addContainerGap(556, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(solution))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(InstanceSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(solution)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(InstanceSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(solution)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,15 +151,12 @@ public class Interface extends javax.swing.JFrame {
                             .addComponent(ajouterInstance))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cheminInstance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        affichageSolution.setText("jTextField1");
-        affichageSolution.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                affichageSolutionActionPerformed(evt);
-            }
-        });
+        affichageSolution.setColumns(20);
+        affichageSolution.setRows(5);
+        jScrollPane1.setViewportView(affichageSolution);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,17 +164,17 @@ public class Interface extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(432, 432, 432)
-                .addComponent(affichageSolution, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 792, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(457, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(affichageSolution, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         pack();
@@ -167,6 +182,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void InstanceSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InstanceSelectActionPerformed
         // TODO add your handling code here:
+        //récupérer l'instance et l'afficher
     }//GEN-LAST:event_InstanceSelectActionPerformed
 
     private void ajouterInstanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterInstanceActionPerformed
@@ -183,15 +199,11 @@ public class Interface extends javax.swing.JFrame {
 
     private void solutionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solutionActionPerformed
         rafraichirInstanceSelect();
+        System.out.println("instance");
         
-        InstanceSelect.addActionListener(new ActionListener()
-        {     
-        @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                
-                 System.out.println("Valeur: " + InstanceSelect.getSelectedItem().toString());  
-                 String instanceZ = System.getProperty("user.dir") + "/../instances/" +InstanceSelect.getSelectedItem().toString();
+        
+        //System.out.println("Valeur: " + InstanceSelect.getSelectedItem().toString());  
+                 //String instanceZ = System.getProperty("user.dir") + "/../instances/" +InstanceSelect.getSelectedItem().toString();
                        // reader = new InstanceReader( InstanceSelect.getSelectedItem().toString() );
                        // instance = reader.readInstance();
                 
@@ -204,14 +216,20 @@ public class Interface extends javax.swing.JFrame {
                 try{
                     
                     et.begin();
-                    InstanceReader reader = new InstanceReader(instanceZ);
-                    instance = reader.readInstance();
+                    
+                    
+                    
                     solutionA = solution2(instance, 0);
+                    em.persist(solutionA);
+                    String affichage = solutionA.afficher();
+                    affichageSolution.setText(affichage);
                     System.out.println("solution :" + solutionA );
+                    et.commit();
                 }catch (Exception ex) {
                     et.rollback();
                     System.err.println("rollback");
                     System.out.println(ex);
+                    
                 }
             } finally {
                 if(em != null && em.isOpen()){
@@ -222,8 +240,9 @@ public class Interface extends javax.swing.JFrame {
                 emf.close();
             }
             }
-            }
-            });
+            
+            
+            
     }//GEN-LAST:event_solutionActionPerformed
 
     private void nomInstanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomInstanceActionPerformed
@@ -234,12 +253,9 @@ public class Interface extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cheminInstanceActionPerformed
 
-    private void affichageSolutionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_affichageSolutionActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        while(true){
-            System.out.println(solutionA.afficher());
-        }
-    }//GEN-LAST:event_affichageSolutionActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     
     private void rafraichirInstanceSelect()
@@ -247,11 +263,11 @@ public class Interface extends javax.swing.JFrame {
         List <String> nameInstances = new ArrayList<>();
         nameInstances = getNameInstances();
         InstanceSelect.removeAllItems();
-        File directory = new File(System.getProperty("user.dir") + "/../instances/");
-         String[] result = directory.list();
-        for (int i = 0; i < result.length; i++) 
+        //File directory = new File(System.getProperty("user.dir") + "/../instances/");
+         //String[] result = directory.list();
+        for (String name:nameInstances) 
         {
-            InstanceSelect.addItem(result[i]);
+            InstanceSelect.addItem(name);
 
         }
     }
@@ -294,10 +310,12 @@ public class Interface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> InstanceSelect;
-    private javax.swing.JTextField affichageSolution;
+    private javax.swing.JTextArea affichageSolution;
     private javax.swing.JButton ajouterInstance;
     private javax.swing.JTextField cheminInstance;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nomInstance;
     private javax.swing.JButton solution;
     // End of variables declaration//GEN-END:variables

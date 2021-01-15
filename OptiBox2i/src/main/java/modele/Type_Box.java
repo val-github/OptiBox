@@ -7,6 +7,7 @@ package modele;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -76,13 +77,7 @@ public class Type_Box implements Serializable{
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
+    
     /*@Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -108,6 +103,8 @@ public class Type_Box implements Serializable{
         return prixBox;
     }
 
+   
+    
     @Override
     public String toString() {
        

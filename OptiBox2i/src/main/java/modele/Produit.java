@@ -16,12 +16,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
+
+
 @Entity
 /**
  *test
  * @author Val
  */
 public class Produit {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

@@ -5,6 +5,7 @@
  */
 package Main;
 
+import static algorithme.Algorithme_rangement.solution2;
 import io.InstanceReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,12 +39,14 @@ public class TestBdd {
                     et.begin();
                     InstanceReader reader = new InstanceReader("../instances/instance_3.csv");
                     Instance instance = reader.readInstance();
+                    Solution solution = new Solution();
+                    solution = solution2( instance, 1);
+                    solution.afficher();
                     em.persist(instance);
                     
         
             
-                   Query querySent = em.createNativeQuery("SELECT NOM FROM INSTANCE");
-                    nameInstances = querySent.getResultList();
+                   
                     for(Object name:nameInstances)
                     {
                         System.out.println(name);

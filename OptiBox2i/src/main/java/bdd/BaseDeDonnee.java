@@ -56,7 +56,8 @@ public class BaseDeDonnee {
                     Instance instance = reader.readInstance();
                     instance.setNom(nomInstance);
                     System.out.println("marche");
-                    em.persist(instance);
+                    
+                    em.merge(instance);
                     
                     et.commit();
                     
@@ -87,7 +88,7 @@ public class BaseDeDonnee {
         
         
         try{
-            
+           
            Query querySent = em.createNativeQuery("SELECT NOM FROM INSTANCE");
            nameInstances = querySent.getResultList();
            
