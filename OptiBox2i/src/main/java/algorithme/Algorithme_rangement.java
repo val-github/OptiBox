@@ -124,8 +124,8 @@ public class Algorithme_rangement {
         }
         
         
-        for(Produit produit:ensemble_produits)
-        {//On assigne les pièces aux piles de box
+        for(Produit produit:ensemble_produits){//On assigne les pièces aux piles de box
+            int id = 0;
             HashSet<Piece> liste_piece = new HashSet<Piece>();//peut-être inutile
             for(i=0;i<produit.getNBprod();i++)
             {//On crée le nombre de pièces renseignées dans produit dans l'attribut liste_piece
@@ -133,61 +133,61 @@ public class Algorithme_rangement {
                 liste_piece.add(p);
             }
         
-            for(Piece p:liste_piece)
-            {
+            for(Piece p:liste_piece){
                 //indicateur pour savoir si la piece est déja placée
                 int indic = 0;
                 System.out.println("\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\");
                 System.out.println("nouvelle piece");
-                //tri des box par ordre crois
+                //tri des box par ordre croisannt de longueur
                 ensemble_box = new HashSet<>(triBL(ensemble_box));
                 
                 //on parcourt les box déja achetés
-                for(Box box:ensemble_box)
-                {
-                    if (indic == 0){
-                        int Loccupee = 0;
-                        System.out.println("vérif piles");
-                        //on parcourt les piles déja placées dans le box
-                        for (Pile pile:box.getEnsemble_pile())
-                        {
-                            Loccupee = Loccupee + pile.getLPileBase();
-                            System.out.println("getLPileBase" + pile.getLPileBase());
-                            System.out.println("pile:" + Loccupee);
-                            //on vérifie si la piéce peut être placée sur la pile
-                            if (indic == 0){
-                                if (p.getProduit().getLprod() <= pile.getLPileSommet())
-                                {
-                                    System.out.println("piece peut tenir sur la pile");
-                                    if (pile.getHPile() + p.getProduit().getHprod() < box.getTypeBox().getHbox())
-                                    {   
-                                        System.out.println("\tajout dans la pile");
-                                        pile.addPiece(p);
-                                        indic = 1;
+                while(indic == 0){
+                    for(Box box:ensemble_box){
+                        System.out.println("Box" + box.toString());
+                        if (indic == 0){
+                            int Loccupee = 0;
+                            System.out.println("vérif piles");
+                            //on parcourt les piles déja placées dans le box
+                            for (Pile pile:box.getEnsemble_pile())
+                            {
+                                Loccupee = Loccupee + pile.getLPileBase();
+                                System.out.println("getLPileBase" + pile.getLPileBase());
+                                System.out.println("Loccupee:" + Loccupee);
+                                //on vérifie si la piéce peut être placée sur la pile
+                                if (indic == 0){
+                                    if (p.getProduit().getLprod() <= pile.getLPileSommet())
+                                    {
+                                        System.out.println("piece peut tenir sur la pile");
+                                        if (pile.getHPile() + p.getProduit().getHprod() < box.getTypeBox().getHbox())
+                                        {   
+                                            System.out.println("\tajout dans la pile");
+                                            pile.addPiece(p);
+                                            indic = 1;
+                                        }
                                     }
                                 }
                             }
-                        }
                     
-                        if (indic == 0)
-                        {
-                            //on vérifie si on peut placer la piéce sur une nouvelle pile dans le boxe
-                            int L = p.getProduit().getLprod();
-                            System.out.println("piece " + L);
-                            System.out.println("occupée " + Loccupee);
-                            if (L + Loccupee <= box.getTypeBox().getLbox())
+                            if (indic == 0)
                             {
-                                //On crée la pile
-                                System.out.println("\tcréation pile");
-                                Pile pile = new Pile();
-                                pile.addPiece(p);
-                                box.addPile(pile);
-                                indic = 1;
+                                //on vérifie si on peut placer la piéce sur une nouvelle pile dans le boxe
+                                int L = p.getProduit().getLprod();
+                                System.out.println("piece " + L);
+                                System.out.println("occupée " + Loccupee);
+                                System.out.println("getTypeBox.getLbox " + box.getTypeBox().getLbox());
+                                if (L + Loccupee <= box.getTypeBox().getLbox())
+                                {
+                                    //On crée la pile
+                                    System.out.println("\tcréation pile");
+                                    Pile pile = new Pile();
+                                    pile.addPiece(p);
+                                    box.addPile(pile);
+                                    indic = 1;
+                                }
                             }
                         }
-                    }
-                    
-                }    
+                    }    
                 
                 
                 if (indic == 0)
@@ -217,6 +217,7 @@ public class Algorithme_rangement {
                     }
                 } 
             } 
+            }
         }
         Solution solution= new Solution(ensemble_box);
         
