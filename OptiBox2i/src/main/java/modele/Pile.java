@@ -34,7 +34,7 @@ public class Pile implements Serializable {
     }
 
     public Pile() {
-        liste_piece=new ArrayList<Piece>();;
+        this.liste_piece=new ArrayList<Piece>();
     }
 
     

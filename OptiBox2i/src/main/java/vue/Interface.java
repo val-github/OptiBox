@@ -21,6 +21,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import modele.Instance;
 import modele.Solution;
 
@@ -58,6 +59,7 @@ public class Interface extends javax.swing.JFrame {
         InstanceSelect = new javax.swing.JComboBox<>();
         solution = new javax.swing.JButton();
         cheminInstance = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         affichageSolution = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -100,6 +102,13 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Affichage");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -113,9 +122,11 @@ public class Interface extends javax.swing.JFrame {
                 .addComponent(ajouterInstance)
                 .addGap(62, 62, 62)
                 .addComponent(InstanceSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(solution)
-                .addContainerGap(556, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(solution, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(801, 801, 801))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,17 +134,18 @@ public class Interface extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(InstanceSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(solution)))
+                        .addComponent(InstanceSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nomInstance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ajouterInstance))
+                            .addComponent(ajouterInstance)
+                            .addComponent(solution))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cheminInstance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cheminInstance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         affichageSolution.setText("jTextField1");
@@ -241,6 +253,27 @@ public class Interface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_affichageSolutionActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        final String query = "SELECT * FROM Instance" ;
+        final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
+        final EntityManager em = emf.createEntityManager();
+        try{
+           Query querySent = em.createQuery(query);
+           BaseReturn = querySent.getResultList();
+        } catch(Exception ie){
+        System.out.println(ie.getMessage());}
+        finally {
+            if(em != null && em.isOpen()){
+                System.err.println("close");
+                em.close();
+            }
+            if(emf != null && emf.isOpen()){
+                emf.close();
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
     private void rafraichirInstanceSelect()
     {
@@ -297,6 +330,7 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JTextField affichageSolution;
     private javax.swing.JButton ajouterInstance;
     private javax.swing.JTextField cheminInstance;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nomInstance;
     private javax.swing.JButton solution;
