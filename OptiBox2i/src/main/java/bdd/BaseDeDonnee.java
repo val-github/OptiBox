@@ -22,7 +22,7 @@ import io.InstanceReader;
  */
 public class BaseDeDonnee {
     static public  List <Instance> afficherInstance(){
-        List <Instance> BaseReturn = new ArrayList<Instance>();
+         List <Instance> BaseReturn = new ArrayList<Instance>();
         final String query = "SELECT * FROM Instance" ;
         final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
         final EntityManager em = emf.createEntityManager();

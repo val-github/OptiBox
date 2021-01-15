@@ -98,13 +98,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="nomInstance" min="-2" max="-2" attributes="0"/>
                               <Component id="ajouterInstance" min="-2" max="-2" attributes="0"/>
-                              <Component id="solution" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cheminInstance" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="cheminInstance" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="10" max="32767" attributes="0"/>

@@ -22,7 +22,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import modele.Instance;
 import modele.Solution;
 
@@ -149,8 +148,7 @@ public class Interface extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nomInstance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ajouterInstance)
-                            .addComponent(solution))
+                            .addComponent(ajouterInstance))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cheminInstance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(10, Short.MAX_VALUE))
@@ -259,27 +257,6 @@ public class Interface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        final String query = "SELECT * FROM Instance" ;
-        final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
-        final EntityManager em = emf.createEntityManager();
-        try{
-           Query querySent = em.createQuery(query);
-           BaseReturn = querySent.getResultList();
-        } catch(Exception ie){
-        System.out.println(ie.getMessage());}
-        finally {
-            if(em != null && em.isOpen()){
-                System.err.println("close");
-                em.close();
-            }
-            if(emf != null && emf.isOpen()){
-                emf.close();
-            }
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     
     private void rafraichirInstanceSelect()
     {
@@ -336,7 +313,6 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JTextArea affichageSolution;
     private javax.swing.JButton ajouterInstance;
     private javax.swing.JTextField cheminInstance;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nomInstance;
