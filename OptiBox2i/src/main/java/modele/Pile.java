@@ -73,10 +73,20 @@ public class Pile implements Serializable {
         return h;
     }
     
-    public int getLPile(){
-        int L = 0;
+    public int getLPileBase(){
+        int L = this.liste_piece.get(0).getProduit().getLprod();
         for(Piece p:this.liste_piece){
             if (p.getProduit().getLprod() > L){
+                L=p.getProduit().getLprod();
+            }
+        }
+        return L;
+    }
+    
+    public int getLPileSommet(){
+        int L = this.liste_piece.get(0).getProduit().getLprod();
+        for(Piece p:this.liste_piece){
+            if (p.getProduit().getLprod() < L){
                 L=p.getProduit().getLprod();
             }
         }
@@ -89,6 +99,10 @@ public class Pile implements Serializable {
     
     @Override
     public String toString() {
-        return "Pile{" + "pieces:" + liste_piece + '}';
+        String string = "\n\t\tpieces:\n";
+        for(Piece p:this.liste_piece){
+            string = string + "\t\t\t" + p.getProduit().toStringSimpl() + "\n";
+        }
+        return string ;
     }
 }

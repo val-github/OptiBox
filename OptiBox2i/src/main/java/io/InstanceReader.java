@@ -125,7 +125,6 @@ public class InstanceReader {
             double prix = elem.getPrix();
             Type_Box box= new Type_Box(id, lon, haut, prix);
             //box.setId((long)Integer.valueOf(id.substring(1,id.length())));
-            System.out.println("lon :"+ lon +"haut :"+haut +"prix"+prix);
             inst.addTypeBox(box);
         }
         

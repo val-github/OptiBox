@@ -55,7 +55,14 @@ public Box( ) {
     public Solution solution;
     
  
-
+    public int getLrestante(){
+        int L = 0;
+        for (Pile pile:this.getEnsemble_pile()){
+            L = L + pile.getLPileBase();
+        }
+        int L1 = this.getTypeBox().getLbox() - L;
+        return L1;
+    }
 
     public Set<Pile> getEnsemble_pile() {
         return ensemble_pile;
@@ -67,7 +74,7 @@ public Box( ) {
 
     @Override
     public String toString() {
-        return "Box{" + "id=" + this.getTypeBox().getId() + ", longueur=" + this.getTypeBox().getLbox() + ", hauteur=" + this.getTypeBox().getHbox() + ", prix=" + this.getTypeBox().getPrixBox() + '}';
+        return "Box{" + "id=" + this.getTypeBox().getId() + ", longueur=" + this.getTypeBox().getLbox() + ", hauteur=" + this.getTypeBox().getHbox() + ", prix=" + this.getTypeBox().getPrixBox() + "\n" + this.getEnsemble_pile().size() + "   piles";
     }
 
  

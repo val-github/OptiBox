@@ -26,7 +26,7 @@ public class test_algorithme_rangement {
         
         
         
-        for (int i = 1; i<11; i++){
+        for (int i = 8; i<9; i++){
             Instance instance = new Instance();
             final EntityManagerFactory emf = Persistence.createEntityManagerFactory("Projet");
             final EntityManager em = emf.createEntityManager();
@@ -60,32 +60,11 @@ public class test_algorithme_rangement {
         
         System.out.println("résultats instance " + i + " :\n\n");
         
-        System.out.println("test triA");
-        Solution solutionA = solution2(instance, 0);
-        for (Box box: solutionA.getEnsemble_box()){
-            System.out.println("box:");
-            System.out.println(box.toString());
-            for (Pile pile:box.getEnsemble_pile()){
-                System.out.println();
-            }
-        }
-        System.out.println(solutionA.toString());
         
         System.out.println("test triL");
         Solution solutionL = solution2(instance, 1);
-        for (Box box: solutionL.getEnsemble_box()){
-            System.out.println("box:");
-            System.out.println(box.toString());
-        }
-        System.out.println(solutionL.toString());
+        System.out.println(solutionL.afficher());
         
-        System.out.println("test triH");
-        Solution solutionH = solution2(instance, 2);
-        for (Box box: solutionH.getEnsemble_box()){
-            System.out.println("box:");
-            System.out.println(box.toString());
-        }
-        System.out.println(solutionH.toString());
         
         System.out.println("\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
         }

@@ -74,6 +74,8 @@ public class Produit {
         return "Produit{" + "id=" + id + ", Lprod=" + Lprod + ", Hprod=" + Hprod + ", NBprod=" + NBprod + '}';
     }
     
-    
+    public String toStringSimpl() {
+        return "Produit{" + "Lprod=" + Lprod + ", Hprod=" + Hprod + '}';
+    }
     
 }
