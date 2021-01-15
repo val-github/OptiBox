@@ -60,6 +60,7 @@ public class Interface extends javax.swing.JFrame {
         InstanceSelect = new javax.swing.JComboBox<>();
         solution = new javax.swing.JButton();
         cheminInstance = new javax.swing.JTextField();
+        affichageSolution = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         affichageSolution = new javax.swing.JTextArea();
@@ -124,6 +125,9 @@ public class Interface extends javax.swing.JFrame {
                 .addComponent(ajouterInstance)
                 .addGap(62, 62, 62)
                 .addComponent(InstanceSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(solution)
+                .addContainerGap(556, Short.MAX_VALUE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,6 +139,10 @@ public class Interface extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(InstanceSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(solution)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(34, 34, 34)
@@ -150,6 +158,8 @@ public class Interface extends javax.swing.JFrame {
                             .addComponent(nomInstance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ajouterInstance))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cheminInstance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
                         .addComponent(cheminInstance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
@@ -252,6 +262,13 @@ public class Interface extends javax.swing.JFrame {
     private void cheminInstanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cheminInstanceActionPerformed
         
     }//GEN-LAST:event_cheminInstanceActionPerformed
+
+    private void affichageSolutionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_affichageSolutionActionPerformed
+        // TODO add your handling code here:
+        while(true){
+            System.out.println(solutionA.afficher());
+        }
+    }//GEN-LAST:event_affichageSolutionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
