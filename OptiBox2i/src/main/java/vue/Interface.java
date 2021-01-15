@@ -5,25 +5,15 @@
  */
 package vue;
 
-import static algorithme.Algorithme_rangement.solution2;
 import static bdd.BaseDeDonnee.enregistrerInstance;
 import static bdd.BaseDeDonnee.getNameInstances;
 import com.sun.beans.finder.FieldFinder;
 import io.InstanceReader;
 import io.ReaderException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import modele.Instance;
-import modele.Solution;
 
 /**
  *
@@ -34,6 +24,8 @@ public class Interface extends javax.swing.JFrame {
     /**
      * Creates new form Interface
      */
+    private String instancePath;
+    private String instanceName;
     public Interface() {
         initComponents();
     }
@@ -183,7 +175,7 @@ public class Interface extends javax.swing.JFrame {
         instanceName=nomInstance.getText();
         instancePath=cheminInstance.getText();
         if(instancePath!="cheminInstance")
-        {
+        {//test ne marche pas, peut être pas besoin
             
             enregistrerInstance(instancePath, instanceName);
             rafraichirInstanceSelect();
@@ -264,12 +256,11 @@ public class Interface extends javax.swing.JFrame {
         List <String> nameInstances = new ArrayList<>();
         nameInstances = getNameInstances();
         InstanceSelect.removeAllItems();
-        //File directory = new File(System.getProperty("user.dir") + "/../instances/");
-         //String[] result = directory.list();
-        for (String name:nameInstances) 
+        System.out.println("nomsInstances");
+        for (String name : nameInstances)
         {
             InstanceSelect.addItem(name);
-
+            System.out.println(name);
         }
     }
     
