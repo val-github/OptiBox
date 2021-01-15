@@ -99,14 +99,12 @@ public class Solution {
     }
     
     public String afficher() {
-        String string = "Solution:\t" + this.getEnsemble_box().size() + "  boxes" + "\n";
+        String string = "Solution: On a besoin de " + this.getEnsemble_box().size() 
+                + "  boxes avec un prix total de " + prix + "\n";
         for(Box box:ensemble_box){
-            string = string + box.toString() + "\n";
-            for (Pile p:box.getEnsemble_pile()){
-                string = "\n" + string + "\t" + "pile:" + p.toString() + "\n";
-            }
+            string = string + box.getTypeBox(). toString() + "\n";
+            
         } 
-        string =string + "\nprix:" + prix;
         return string;
     }
 
